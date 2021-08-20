@@ -1,23 +1,14 @@
 {
-  "name": "strangerthings",
+  "name": "stranger_things",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "CHOKIDAR_USEPOLLING=true react-scripts start",
-    "build": "react-scripts build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tgpretender/Stranger_Things_MJ.git"
+    "start": "CHOKIDAR_USEPOLLING=true react-scripts start"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tgpretender/Stranger_Things_MJ/issues"
-  },
-  "homepage": "https://github.com/tgpretender/Stranger_Things_MJ#readme",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
