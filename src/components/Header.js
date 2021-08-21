@@ -5,9 +5,7 @@ import React from 'react';
 // color scheme? 
 
 const Header = (props) => {
-    const { isAuthenticated } = props;
-    const userID = "Example";
-    //pass the userID as props from index.js
+    const { isAuthenticated, userName } = props;
     
     if(!isAuthenticated) {
         return (<header>
@@ -19,7 +17,7 @@ const Header = (props) => {
             </header>)
     } else {
         return (<header>
-            <h1>Welcome, {userID}!</h1>
+            <h1>Welcome, {userName}!</h1>
             <nav>
                 <button>Home</button>
                 <button>Posts</button>

@@ -11,7 +11,7 @@ const Register = (props) => {
     function registerUser(user, pass) {
         event.preventDefault();
         
-        fetch(`${baseURL}/users/register`, {
+        let response = fetch(`${baseURL}/users/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,7 +25,8 @@ const Register = (props) => {
         })
         .then(res => res.json())
         .then(result => console.log(result))
-        .catch(err => console.error(err))
+        .catch(err => console.error(err));
+        console.log(response.status);
     }
     //if user already exists, make an alert
     //set isAuthenticated to true, set userID to username, set userToken to token
