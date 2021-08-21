@@ -4,20 +4,20 @@ import { Link, Redirect } from 'react-router-dom';
 //visibility to be controlled by the Login button
 //targets CSS property visiblity to switch from visible to hidden
 
-const Login = ({setIsAuthenticated}) => {
+const Login = (props) => {
+    const { baseURL, setUserToken, setUserName, setIsAuthenticated } = props;
 //const [ loginSuccessful, setLoginSuccessful ] = useState(false);
 //why does this break the code...??????
 
     function authenticate() {
         event.preventDefault();
-        const username = document.getElementById('usernameInput').value;
-        const password = document.getElementById('passwordInput').value;
+
         if(username.length != 0 && password.length !=0) {
             //validate data
             //make ajax request to the backend
             //backend will return a response letting us know if user was authenticated
             //if authenticated:
-            setIsAuthenticated(true);
+            //setIsAuthenticated(true);
 
             
         } else {
@@ -51,6 +51,7 @@ const Login = ({setIsAuthenticated}) => {
                         </div>
                         <button type="submit">Login</button>
                         <p>Not a member?</p>
+                        <button>Register</button>
                         {/* <Link to="/register" class="linkBtn">Register</Link> */}
                     </form>
                 </section>

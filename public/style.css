@@ -60,17 +60,17 @@ footer {
     grid-column:1/ -1;
     background-color:lightblue;
 }
-#register {
-    visibility:visible;
-    padding:10px;
-    text-align:center;
-}
-.login {
+.register {
     visibility:hidden;
     padding:10px;
     text-align:center;
 }
-#newPost {
+.login {
+    visibility:visible;
+    padding:10px;
+    text-align:center;
+}
+.newPost {
     visibility:hidden;
     padding:10px;
     text-align:center;
