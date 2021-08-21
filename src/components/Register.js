@@ -1,21 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //visibility to be controlled by the Register button
 //targets CSS property visiblity to switch from visible to hidden
 
 const Register = (props) => {
     const { baseURL } = props;
+    const [ username, setUsername ] = useState("");
+    const [ password, setPassword ] = useState("");
 
-    const regUser = () => {
+    function registerUser(user, pass) {
+        //event.preventDefault();    
+
         fetch(`${baseURL}/users/register`, {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 user: {
-                    "username": {username},
-                    "password": {password}
+                    username: {user},
+                    password: {pass}
                 }
             })
         })
@@ -23,27 +27,49 @@ const Register = (props) => {
         .then(result => console.log(result))
         .catch(err => console.error(err))
     }
-    //if above POST works, turn isAuthenticated to true
-    //use setIsAuthenticated?
+    //if user already exists, make an alert
+    //set isAuthenticated to true, set user variables to inputs
 
-    //in confirm button onClick code, make sure it checks for stuff typed into it, otherwise give an error alert to the user
-    //set input values as username and password variables to pass through regUser
-
-    return <div id="register">
-        <h2>Please register to post:</h2>
-        <h3>Username</h3>
-        <input 
-        id="username" 
-        type="text"
-        placeholder="Enter username..." />
-        <h3>Password</h3>
-        <input 
-        id="password" 
-        type="text" 
-        placeholder="Enter username..."/>
-        <br />
-        <button>CONFIRM</button>
-        </div>
+    return (
+        <section className="register">
+            <form onSubmit={(e) => {
+                e.preventDefault(); 
+                fetch(`${baseURL}/users/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user: {
+                            username: {username},
+                            password: {password}
+                        }
+                    })
+                })
+                .then(res => res.json())
+                .then(result => console.log(result))
+                .catch(err => console.error(err))
+                }}>
+            <div>
+                <label>Username: </label>
+                <input id="usernameInput" 
+                type="type"
+                name="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)} />
+            </div>
+            <div>
+                <label>Password: </label>
+                <input id="passwordInput" 
+                type="type"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} />
+            </div>
+                <button type="submit">Register</button>
+            </form>
+        </section>
+    )
 }
 
 export default Register;

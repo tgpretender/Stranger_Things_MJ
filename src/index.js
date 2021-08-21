@@ -20,9 +20,6 @@ const App = () => {
             This is the main window where posts will appear
         </main>
         <section id="sidebar">
-            <button>Register</button>
-            <br /><br />
-            <button>Login</button>
             <Register baseURL={baseURL} />
             <Login />
             <NewPost />
