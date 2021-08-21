@@ -12,7 +12,7 @@ const App = () => {
     const baseURL = 'https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
 
     const [ isAuthenticated, setIsAuthenticated ] = useState(false);
-
+    const [ userToken, setUserToken ] = useState("");
 
     return <div className="app">
         <Header isAuthenticated={isAuthenticated}/>
@@ -20,7 +20,7 @@ const App = () => {
             This is the main window where posts will appear
         </main>
         <section id="sidebar">
-            <Register baseURL={baseURL} />
+            <Register baseURL={baseURL, setUserToken={setUserToken}} />
             <Login />
             <NewPost />
         </section>

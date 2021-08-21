@@ -4,13 +4,13 @@ import React, { useState } from 'react';
 //targets CSS property visiblity to switch from visible to hidden
 
 const Register = (props) => {
-    const { baseURL } = props;
+    const { baseURL, setUserToken } = props;
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
 
     function registerUser(user, pass) {
-        //event.preventDefault();    
-
+        event.preventDefault();
+        
         fetch(`${baseURL}/users/register`, {
             method: 'POST',
             headers: {
@@ -18,8 +18,8 @@ const Register = (props) => {
             },
             body: JSON.stringify({
                 user: {
-                    username: {user},
-                    password: {pass}
+                    username: user,
+                    password: pass
                 }
             })
         })
@@ -28,28 +28,11 @@ const Register = (props) => {
         .catch(err => console.error(err))
     }
     //if user already exists, make an alert
-    //set isAuthenticated to true, set user variables to inputs
+    //set isAuthenticated to true, set userID to username, set userToken to token
 
     return (
         <section className="register">
-            <form onSubmit={(e) => {
-                e.preventDefault(); 
-                fetch(`${baseURL}/users/register`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        user: {
-                            username: {username},
-                            password: {password}
-                        }
-                    })
-                })
-                .then(res => res.json())
-                .then(result => console.log(result))
-                .catch(err => console.error(err))
-                }}>
+            <form onSubmit={() => {registerUser(username,password)}} >
             <div>
                 <label>Username: </label>
                 <input id="usernameInput" 
@@ -65,8 +48,9 @@ const Register = (props) => {
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} />
-            </div>
-                <button type="submit">Register</button>
+            
+                <button onClick={() => registerUser(username,password)}>Register</button>
+                </div>
             </form>
         </section>
     )
