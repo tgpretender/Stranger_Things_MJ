@@ -21,7 +21,7 @@ const App = () => {
             This is the main window where posts will appear
         </main>
         <section id="sidebar">
-            <Register baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} />
+            <Register baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
             <Login setUserToken={setUserToken} setUserName={setUserName} />
             <NewPost userName={userName} />
         </section>

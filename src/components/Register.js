@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 
-//visibility to be controlled by the Register button
-//targets CSS property visiblity to switch from visible to hidden
-
 const Register = (props) => {
-    const { baseURL, setUserToken, setUserName } = props;
+    const { baseURL, setUserToken, setUserName, setIsAuthenticated } = props;
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
 
@@ -24,19 +21,23 @@ const Register = (props) => {
             })
         })
         .then(res => res.json())
-        .then(result => console.log(result))
+        .then((result) => { 
+            const success = result.success;
+            if(success){
+                setUserName(user);
+                setUserToken(result.data.token);
+                setIsAuthenticated(true);
+                //set visibility of Register to hidden?
+            }else {
+                alert("Please try again!");
+            }
+        })
         .catch(err => console.error(err))
-
-        
-
-
     }
-
-    //if user already exists, make an alert
-    //set isAuthenticated to true, set userID to username, set userToken to token
 
     return (
         <section className="register">
+            <h1>Please register to post!</h1>
             <form onSubmit={() => {registerUser(username,password)}} >
             <div>
                 <label>Username: </label>
