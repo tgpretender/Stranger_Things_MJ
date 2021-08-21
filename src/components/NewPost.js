@@ -4,7 +4,7 @@ import React from 'react';
 //targets CSS property visiblity to switch from hidden to visible
 
 const NewPost = () => {
-    return <div id="newPost">NewPost</div>
+    return <div className="newPost">NewPost</div>
 }
 
 export default NewPost;
