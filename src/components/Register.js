@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 //targets CSS property visiblity to switch from visible to hidden
 
 const Register = (props) => {
-    const { baseURL, setUserToken } = props;
+    const { baseURL, setUserToken, setUserName } = props;
     const [ username, setUsername ] = useState("");
     const [ password, setPassword ] = useState("");
 
     function registerUser(user, pass) {
         event.preventDefault();
         
-        let response = fetch(`${baseURL}/users/register`, {
+        fetch(`${baseURL}/users/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,9 +25,13 @@ const Register = (props) => {
         })
         .then(res => res.json())
         .then(result => console.log(result))
-        .catch(err => console.error(err));
-        console.log(response.status);
+        .catch(err => console.error(err))
+
+        
+
+
     }
+
     //if user already exists, make an alert
     //set isAuthenticated to true, set userID to username, set userToken to token
 

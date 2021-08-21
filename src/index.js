@@ -11,7 +11,7 @@ import {
 const App = () => {
     const baseURL = 'https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
 
-    const [ isAuthenticated, setIsAuthenticated ] = useState(true);
+    const [ isAuthenticated, setIsAuthenticated ] = useState(false);
     const [ userToken, setUserToken ] = useState("");
     const [ userName, setUserName ] = useState("Bob")
 
