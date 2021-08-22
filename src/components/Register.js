@@ -45,7 +45,8 @@ const Register = (props) => {
                 type="type"
                 name="username"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)} />
+                onChange={(e) => setUsername(e.target.value)} 
+                required />
             </div>
             <div>
                 <label>Password: </label>
@@ -53,10 +54,10 @@ const Register = (props) => {
                 type="type"
                 name="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)} />
-            
+                onChange={(e) => setPassword(e.target.value)} 
+                required />
+                </div>            
                 <button onClick={() => registerUser(username,password)}>Register</button>
-                </div>
             </form>
         </section>
     )

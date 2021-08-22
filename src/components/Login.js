@@ -1,55 +1,70 @@
-import { userState } from 'react';
+import { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-//visibility to be controlled by the Login button
-//targets CSS property visiblity to switch from visible to hidden
 
 const Login = (props) => {
     const { baseURL, setUserToken, setUserName, setIsAuthenticated } = props;
-//const [ loginSuccessful, setLoginSuccessful ] = useState(false);
-//why does this break the code...??????
+    const [ username, setUsername ] = useState("");
+    const [ password, setPassword ] = useState("");
 
-    function authenticate() {
+    function loginUser(user,pass) {
         event.preventDefault();
 
-        if(username.length != 0 && password.length !=0) {
-            //validate data
-            //make ajax request to the backend
-            //backend will return a response letting us know if user was authenticated
-            //if authenticated:
-            //setIsAuthenticated(true);
-
-            
-        } else {
-            console.log('not valid username and/or password')
-            //set up an alert message
-        }
+        fetch(`${baseURL}/users/`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIxODhkYTZjYzIzNDAwMTcxN2EzZmUiLCJ1c2VybmFtZSI6IkphbWVzIiwiaWF0IjoxNjI5NTg3Njc0fQ.s75BRbhX5bWj_LqfGm98YvHaMeEUHLzG30eDcx8DJqs'
+            },
+            body: JSON.stringify({
+                user: {
+                    username: user,
+                    password: pass
+                }
+            })
+        })
+        .then(res => res.json())
+        .then((result) => { 
+            console.log(result);
+            // const success = result.success;
+            // if(success){
+            //     console.log(result);
+            //     // setUserName(user);
+            //     // setUserToken(result.data.token);
+            //     // setIsAuthenticated(true);
+            //     //set visibility of Register to hidden?
+            // }else {
+            //     alert("Please try again!");
+            // }
+        })
+        .catch(err => console.error(err))
         
     }
 
-    // if(loginSuccessful) {
-    //     //conditionally don’t render the Login option now, show Logout option
-    //     return <Redirect to="/" />
-    // } else {
-        //all the normal return stuff
-    //     )
-
     return (
                 <section className="login">
-                    <form onSubmit={authenticate}>
+                    <h1>Please log in to post!</h1>
+                    <form onSubmit={() => {loginUser(username,password)}}>
                         <div>
                             <label>Username: </label>
                             <input id="usernameInput" 
                             type="type"
-                            name="usernameInput" />
+                            name="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required />
                         </div>
                         <div>
                             <label>Password: </label>
                             <input id="passwordInput" 
                             type="type"
-                            name="passwordInput" />
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)} 
+                            required />
                         </div>
-                        <button type="submit">Login</button>
+                        <button onClick={() => loginUser(username,password)}>Login</button>
+                        <br /><br />
                         <p>Not a member?</p>
                         <button>Register</button>
                         {/* <Link to="/register" class="linkBtn">Register</Link> */}
