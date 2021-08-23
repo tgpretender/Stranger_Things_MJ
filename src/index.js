@@ -9,9 +9,24 @@ import {
 } from './components';
 
 const App = () => {
-    const baseURL = 'https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
+    const baseURL = 'https://strangers-things.herokuapp.com/api/2105-vpi-web-pt/posts'
 
     const [ isAuthenticated, setIsAuthenticated ] = useState(false);
+
+    const [posts, setPosts] = useState([]);
+
+    fetch(baseURL) 
+        .then(res => res.json())
+        .then(result => console.log(result));
+
+        fetch(baseURL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer TOKEN_STRING_HERE'
+            },
+            body: JSON.stringify({ /* whatever things you need to send to the API */ })
+          })
 
 
     return <div className="app">
