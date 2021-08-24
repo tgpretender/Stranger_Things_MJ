@@ -5,9 +5,7 @@
 }
 body {
     height: 100vh;
-}
-h1 {
-    margin-bottom:10px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 h2 {
     margin-bottom:10px;
@@ -37,36 +35,70 @@ button {
 header {
     grid-row:1;
     grid-column:1 / -1;
-    background-color:pink;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding:10px;
+    background-color:#2f6690;
+    color:white;
+    border-bottom: 5px dashed #483b33;
+}
+header h1 {
+    font-size: 50px;
+    font-family: 'Dancing Script', cursive;
+}
+header img {
+    border:2px solid #483b33;
+    border-radius:40px;
 }
 nav {
     text-align:right;
 }
+nav button {
+    margin-left:10px;
+    background-color:#483B33;
+    color:white;
+}
+nav button:hover {
+    color:#81c3d7;
+}
 main {
     grid-row:2;
     grid-column:1;
-    background-color:lightgreen;
+    padding:10px;
+    background-color:#f0ead2;
 }
 #sidebar {
     grid-row:2;
     grid-column:2;
     height:100%;
     padding:10px;
-    background-color:lightgray;
+    background-color:#a98467;
     text-align: center;
+}
+#sidebar h1 {
+    margin-bottom:10px;
+}
+#sidebar button {
+    background-color:#81c3d7;
+}
+#sidebar button:hover {
+    color:#483B33;
 }
 footer {
     grid-row:3;
     grid-column:1/ -1;
-    background-color:lightblue;
+    padding:10px;
+    background-color:#2f6690;
+    border-top: 5px dashed #483b33;
 }
 .register {
-    visibility:visible;
+    visibility:hidden;
     padding:10px;
     text-align:center;
 }
 .login {
-    visibility:hidden;
+    visibility:visible;
     padding:10px;
     text-align:center;
 }
