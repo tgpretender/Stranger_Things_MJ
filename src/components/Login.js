@@ -18,8 +18,8 @@ const Login = (props) => {
             },
             body: JSON.stringify({
                 user: {
-                    username: user,
-                    password: pass
+                    username: "James",
+                    password: "Pass"
                 }
             })
         })

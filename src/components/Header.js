@@ -9,6 +9,7 @@ const Header = (props) => {
     
     if(!isAuthenticated) {
         return (<header>
+                <img src="http://placekitten.com/80/80" />
                 <h1>Welcome!</h1>
                 <nav>
                     <button>Home</button>
@@ -17,6 +18,7 @@ const Header = (props) => {
             </header>)
     } else {
         return (<header>
+            <img src="http://placekitten.com/80/80" />
             <h1>Welcome, {userName}!</h1>
             <nav>
                 <button>Home</button>
