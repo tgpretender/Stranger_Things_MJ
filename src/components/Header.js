@@ -5,18 +5,27 @@ import React from 'react';
 // color scheme? 
 
 const Header = (props) => {
-    const { isAuthenticated } = props;
+    const { isAuthenticated, userName } = props;
     
-    // nav controls
     if(!isAuthenticated) {
-        console.log("Not authenticated")
-        // when user is not logged in, header only has Home and Posts buttons
+        return (<header>
+                <h1>Welcome!</h1>
+                <nav>
+                    <button>Home</button>
+                    <button>Posts</button>
+                </nav>
+            </header>)
     } else {
-        console.log("Authenticated")
-        // when user is logged in, has Home, Posts, Profile, Logout
+        return (<header>
+            <h1>Welcome, {userName}!</h1>
+            <nav>
+                <button>Home</button>
+                <button>Posts</button>
+                <button>Profile</button>
+                <button>Log Out</button>
+            </nav>
+        </header>)
     }
-
-    return <header>This is the header</header>
 }
 
 export default Header;
