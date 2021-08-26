@@ -10,32 +10,42 @@ const Login = (props) => {
     function loginUser(user,pass) {
         event.preventDefault();
 
-        fetch(`${baseURL}/users/`, {
-            method: 'GET',
+        fetch(`${baseURL}/users/login`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTIxODhkYTZjYzIzNDAwMTcxN2EzZmUiLCJ1c2VybmFtZSI6IkphbWVzIiwiaWF0IjoxNjI5NTg3Njc0fQ.s75BRbhX5bWj_LqfGm98YvHaMeEUHLzG30eDcx8DJqs'
             },
             body: JSON.stringify({
                 user: {
-                    username: "James",
-                    password: "Pass"
+                    username: user,
+                    password: pass
                 }
             })
         })
         .then(res => res.json())
         .then((result) => { 
-            console.log(result);
-            // const success = result.success;
-            // if(success){
-            //     console.log(result);
-            //     // setUserName(user);
-            //     // setUserToken(result.data.token);
-            //     // setIsAuthenticated(true);
-            //     //set visibility of Register to hidden?
-            // }else {
-            //     alert("Please try again!");
-            // }
+            if(result.success === true){
+                setIsAuthenticated(true);
+                setUserToken(result.data.token);
+                setUserName(user);
+
+                if(!localStorage.getItem("usertoken")){
+                    localStorage.setItem("usertoken", result.data.token);
+                }
+                
+                if(!localStorage.getItem("username")){
+                    localStorage.setItem("username", user);
+                }
+                
+                if(!localStorage.getItem("isLoggedIn")){
+                    localStorage.setItem("isLoggedIn", true);
+                }
+
+                //set visibility toggle
+                //set logic for the Register button
+            } else {
+                alert("Please try again!");
+            }
         })
         .catch(err => console.error(err))
         
@@ -47,7 +57,7 @@ const Login = (props) => {
                     <form onSubmit={() => {loginUser(username,password)}}>
                         <div>
                             <label>Username: </label>
-                            <input id="usernameInput" 
+                            <input id="loginUsernameInput" 
                             type="type"
                             name="username"
                             value={username}
@@ -56,7 +66,7 @@ const Login = (props) => {
                         </div>
                         <div>
                             <label>Password: </label>
-                            <input id="passwordInput" 
+                            <input id="loginPasswordInput" 
                             type="type"
                             name="password"
                             value={password}
@@ -67,7 +77,7 @@ const Login = (props) => {
                         <br /><br />
                         <p>Not a member?</p>
                         <button>Register</button>
-                        {/* <Link to="/register" class="linkBtn">Register</Link> */}
+                        {/* <Link to="/register" class="linkButton">Register</Link> */}
                     </form>
                 </section>
             )

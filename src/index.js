@@ -12,19 +12,19 @@ import {
 const App = () => {
     const baseURL = 'https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
 
-    const [ isAuthenticated, setIsAuthenticated ] = useState(false);
-    const [ userToken, setUserToken ] = useState("");
-    const [ userName, setUserName ] = useState("Bob")
+    const [ isAuthenticated, setIsAuthenticated ] = useState(localStorage.getItem("isLoggedIn"));
+    const [ userToken, setUserToken ] = useState(localStorage.getItem("usertoken"));
+    const [ userName, setUserName ] = useState(localStorage.getItem("username"))
 
     return <div className="app">
-        <Header isAuthenticated={isAuthenticated} userName={userName} />
+        <Header isAuthenticated={isAuthenticated} userName={userName} setUserName={setUserName} setUserToken={setUserToken} setIsAuthenticated={setIsAuthenticated}/>
         <main>
            <GetData baseURL={baseURL} />
         </main>
         <section id="sidebar">
             <Register baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} />
             <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} />
-            <NewPost userName={userName} />
+            <NewPost baseURL={baseURL} userName={userName} isAuthenticated={isAuthenticated}/>
         </section>
         <footer>
             This will be for searching

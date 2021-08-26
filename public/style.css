@@ -26,7 +26,7 @@ button {
 .app {
     display: grid;
     grid-template-columns: 1fr 20%;
-    grid-template-rows: 10% 1fr 10%;
+    grid-template-rows: 15% 1fr 10%;
     overflow: hidden;
     height: 100%;
     width: 100%;
@@ -93,17 +93,17 @@ footer {
     border-top: 5px dashed #483b33;
 }
 .register {
-    visibility:hidden;
+    display:none;
     padding:10px;
     text-align:center;
 }
 .login {
-    visibility:visible;
+    display:inline;
     padding:10px;
     text-align:center;
 }
 .newPost {
-    visibility:hidden;
+    display:none;
     padding:10px;
     text-align:center;
 }

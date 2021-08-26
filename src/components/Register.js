@@ -22,12 +22,24 @@ const Register = (props) => {
         })
         .then(res => res.json())
         .then((result) => { 
-            const success = result.success;
-            if(success){
-                setUserName(user);
-                setUserToken(result.data.token);
+            if(result.success === true){
                 setIsAuthenticated(true);
-                //set visibility of Register to hidden?
+                setUserToken(result.data.token);
+                setUserName(user);
+
+                if(!localStorage.getItem("usertoken")){
+                    localStorage.setItem("usertoken", result.data.token);
+                }
+                
+                if(!localStorage.getItem("username")){
+                    localStorage.setItem("username", user);
+                }
+                
+                if(!localStorage.getItem("isLoggedIn")){
+                    localStorage.setItem("isLoggedIn", true);
+                }
+                
+                //set visibility toggle
             }else {
                 alert("Please try again!");
             }
