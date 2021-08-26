@@ -93,7 +93,7 @@ footer {
     border-top: 5px dashed #483b33;
 }
 .register {
-    visibility:visible;
+    visibility:hidden;
     padding:10px;
     text-align:center;
 }
@@ -103,7 +103,7 @@ footer {
     text-align:center;
 }
 .newPost {
-    visibility:hidden;
+    visibility:visible;
     padding:10px;
     text-align:center;
 }

@@ -23,7 +23,7 @@ const App = () => {
         <section id="sidebar">
             <Register baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} />
             <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} />
-            <NewPost userName={userName} />
+            <NewPost baseURL={baseURL} userName={userName} isAuthenticated={isAuthenticated}/>
         </section>
         <footer>
             This will be for searching

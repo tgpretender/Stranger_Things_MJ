@@ -63,7 +63,7 @@ const Login = (props) => {
                     <form onSubmit={() => {loginUser(username,password)}}>
                         <div>
                             <label>Username: </label>
-                            <input id="usernameInput" 
+                            <input id="loginUsernameInput" 
                             type="type"
                             name="username"
                             value={username}
@@ -72,7 +72,7 @@ const Login = (props) => {
                         </div>
                         <div>
                             <label>Password: </label>
-                            <input id="passwordInput" 
+                            <input id="loginPasswordInput" 
                             type="type"
                             name="password"
                             value={password}
