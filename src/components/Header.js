@@ -21,7 +21,7 @@ const Header = (props) => {
                 <button>Home</button>
                 <button>Posts</button>
                 <button>Profile</button>
-                <button>Log Out</button>
+                <button onClick={() => Logout()}>Log Out</button>
             </nav>
         </header>);
     
@@ -29,8 +29,9 @@ const Header = (props) => {
         setIsAuthenticated(false);
         setUserName("");
         setUserToken("");
-        localStorage.setItem("usertoken", null);
-        localStorage.setItem("username", null);
+        localStorage.removeItem("usertoken");
+        localStorage.removeItem("username");
+        localStorage.removeItem("isLoggedIn");
     }
 
     if(!isAuthenticated) {

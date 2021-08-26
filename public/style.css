@@ -93,12 +93,12 @@ footer {
     border-top: 5px dashed #483b33;
 }
 .register {
-    visibility:hidden;
+    visibility:visible;
     padding:10px;
     text-align:center;
 }
 .login {
-    visibility:visible;
+    visibility:hidden;
     padding:10px;
     text-align:center;
 }

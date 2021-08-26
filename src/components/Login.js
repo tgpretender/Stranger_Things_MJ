@@ -41,6 +41,12 @@ const Login = (props) => {
                 } else if (localStorage.getItem("username") !== user) {
                     localStorage.setItem("username", user);
                 }
+                
+                if(!localStorage.getItem("isLoggedIn")){
+                    localStorage.setItem("isLoggedIn", true);
+                } else if (localStorage.getItem("isLoggedIn") !== true) {
+                    localStorage.setItem("isLoggedIn", true);
+                }
 
                 //set visibility of Register to hidden?
             } else {
