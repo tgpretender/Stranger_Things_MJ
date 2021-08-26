@@ -32,23 +32,18 @@ const Login = (props) => {
 
                 if(!localStorage.getItem("usertoken")){
                     localStorage.setItem("usertoken", result.data.token);
-                } else if (localStorage.getItem("usertoken") !== result.data.token) {
-                    localStorage.setItem("usertoken", result.data.token);
                 }
                 
                 if(!localStorage.getItem("username")){
-                    localStorage.setItem("username", user);
-                } else if (localStorage.getItem("username") !== user) {
                     localStorage.setItem("username", user);
                 }
                 
                 if(!localStorage.getItem("isLoggedIn")){
                     localStorage.setItem("isLoggedIn", true);
-                } else if (localStorage.getItem("isLoggedIn") !== true) {
-                    localStorage.setItem("isLoggedIn", true);
                 }
 
-                //set visibility of Register to hidden?
+                //set visibility toggle
+                //set logic for the Register button
             } else {
                 alert("Please try again!");
             }
@@ -83,7 +78,7 @@ const Login = (props) => {
                         <br /><br />
                         <p>Not a member?</p>
                         <button>Register</button>
-                        {/* <Link to="/register" class="linkBtn">Register</Link> */}
+                        {/* <Link to="/register" class="linkButton">Register</Link> */}
                     </form>
                 </section>
             )

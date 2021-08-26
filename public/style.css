@@ -26,7 +26,7 @@ button {
 .app {
     display: grid;
     grid-template-columns: 1fr 20%;
-    grid-template-rows: 10% 1fr 10%;
+    grid-template-rows: 15% 1fr 10%;
     overflow: hidden;
     height: 100%;
     width: 100%;

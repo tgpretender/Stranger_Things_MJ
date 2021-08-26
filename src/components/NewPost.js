@@ -2,37 +2,56 @@ import { useState } from 'react';
 
 const NewPost = (props) => {
     const { baseURL, userName, isAuthenticated} = props;
-    const [ title, setTitle ] = useState(" ");
-    const [ message, setMessage ] = useState(" ");
+    const [ postTitle, setPostTitle ] = useState(" ");
+    const [ postMessage, setPostMessage ] = useState(" ");
 
-    function sendPost(postTitle,postMessage) {
+    //this should only appear if isAuthenticated = true
+    //should definitely not work unless it is, too
+    //figure this out AFTER the sendPost funciton is working successfully
+
+    //variable testing, will be deleted once NewPost is working correctly
+    if(isAuthenticated) {
+        console.log("Can post? ", true);
+    } else {
+        console.log("Can post? ", false);
+    }
+    //end of variable testing
+
+    function sendPost(title,message) {
         event.preventDefault();
 
-        //assign property to the post for userName
-        //that way it can be used to decide if a post can be deleted
-        //use title and message to fill it in when sending to the database
+        //variable testing, will be deleted once sendPost is working correctly
+        console.log("Current user:", userName);
+        console.log("Title:", title);
+        console.log("Message: ", message);
+        //end of variable testing
 
-        console.log(userName);
-        console.log("Title:", postTitle);
-        console.log("Message: ", postMessage);
+        function sendPost(title,message) {
+            //look at Register to get an idea of how to go about this
 
-        if(isAuthenticated) {
-            console.log("can post");
-        } else {
-            console.log("cannot post")
+            //use fetch to send the post out to to baseURL/posts, I think?
+            //https://strangers-things.herokuapp.com/api/ is the documentation to check
+
+            //use title,message, and username to fill in what's sent to the database
+            //username is so it can be used to decide if a post can be deleted by the logged in user
+            //also so it can be used to search for all posts by that user
+
+        
         }
+
+        //once we know this works, possibly display the new post in main after submission?
     }
 
     return (<div className="newPost">
         <h1>Make a New Post</h1>
-            <form onSubmit={() => {sendPost(title,message)}}>
+            <form onSubmit={() => {sendPost(postTitle,postMessage)}}>
                 <div>
                     <label>Title: </label><br />
                     <input id="title"
                     type="type"
                     name="title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)} />
+                    value={postTitle}
+                    onChange={(e) => setPostTitle(e.target.value)} />
                 </div>
                 <div>
                     <label>Message: </label><br />
@@ -41,10 +60,10 @@ const NewPost = (props) => {
                     name="message"
                     rows="5"
                     cols="23"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)} />
+                    value={postMessage}
+                    onChange={(e) => setPostMessage(e.target.value)} />
                 </div>
-                <button onClick={() => sendPost(title,message)}>Submit</button>
+                <button onClick={() => sendPost(postTitle,postMessage)}>Submit</button>
             </form>
         </div>)
 }
