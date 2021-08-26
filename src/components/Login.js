@@ -24,7 +24,6 @@ const Login = (props) => {
         })
         .then(res => res.json())
         .then((result) => { 
-            const success = result.success;
             if(result.success === true){
                 setIsAuthenticated(true);
                 setUserToken(result.data.token);

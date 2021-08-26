@@ -3,7 +3,7 @@ import React from 'react';
 const Header = (props) => {
     const { isAuthenticated, userName, setUserName, setUserToken, setIsAuthenticated } = props;
 
-    //clean this up for version without repeating the header code, just the buttons
+    //clean this up later for version without repeating the header code, just the buttons. ternary?
 
     const notLoggedIn = (
         <header>
