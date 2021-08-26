@@ -27,6 +27,17 @@ const Register = (props) => {
                 setUserName(user);
                 setUserToken(result.data.token);
                 setIsAuthenticated(true);
+                if(!localStorage.getItem("usertoken")){
+                    localStorage.setItem("usertoken", result.data.token);
+                } else if (localStorage.getItem("usertoken") !== result.data.token) {
+                    localStorage.setItem("usertoken", result.data.token);
+                }
+                
+                if(!localStorage.getItem("username")){
+                    localStorage.setItem("username", user);
+                } else if (localStorage.getItem("username") !== user) {
+                    localStorage.setItem("username", user);
+                }
                 //set visibility of Register to hidden?
             }else {
                 alert("Please try again!");

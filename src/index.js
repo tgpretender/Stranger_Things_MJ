@@ -11,12 +11,12 @@ import {
 const App = () => {
     const baseURL = 'https://strangers-things.herokuapp.com/api/2105-vpi-web-pt'
 
-    const [ isAuthenticated, setIsAuthenticated ] = useState(false);
-    const [ userToken, setUserToken ] = useState("");
-    const [ userName, setUserName ] = useState("Bob")
+    const [ isAuthenticated, setIsAuthenticated ] = useState(true);
+    const [ userToken, setUserToken ] = useState(localStorage.getItem("usertoken"));
+    const [ userName, setUserName ] = useState(localStorage.getItem("username"))
 
     return <div className="app">
-        <Header isAuthenticated={isAuthenticated} userName={userName} />
+        <Header isAuthenticated={isAuthenticated} userName={userName} setUserName={setUserName} setUserToken={setUserToken} setIsAuthenticated={setIsAuthenticated}/>
         <main>
             This is the main window where posts will appear
         </main>
