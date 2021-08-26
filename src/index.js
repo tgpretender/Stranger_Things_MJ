@@ -24,6 +24,16 @@ const App = () => {
     const [ userToken, setUserToken ] = useState(localStorage.getItem("usertoken"));
     const [ userName, setUserName ] = useState(localStorage.getItem("username"))
 
+    if(isAuthenticated) {
+        //make sure newPost displays on homepage when user isAuthenticated, not login
+        const loginElement = document.getElementsByClassName('.login');
+        console.log(loginElement);
+        //loginElement.style.display='none';
+
+        //should this be logic baked into Login that it's only visible when authenticated?
+        //would that be INSIDE the Login const or before it...?
+        //talk to Jay or Kathryn about it
+    }
     return <div className="app">
         <Header isAuthenticated={isAuthenticated} userName={userName} setUserName={setUserName} setUserToken={setUserToken} setIsAuthenticated={setIsAuthenticated}/>
         <main>
@@ -31,7 +41,7 @@ const App = () => {
         </main>
         <section id="sidebar">
             <Register baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} />
-            <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} />
+            <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
             <NewPost baseURL={baseURL} userName={userName} isAuthenticated={isAuthenticated}/>
         </section>
         <footer>
