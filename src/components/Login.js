@@ -4,8 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 
 const Login = (props) => {
     const { baseURL, setUserToken, setUserName, setIsAuthenticated } = props;
-    const [ username, setUsername ] = useState("");
-    const [ password, setPassword ] = useState("");
+    const [ loginUsername, setLoginUsername ] = useState("");
+    const [ loginPassword, setLoginPassword ] = useState("");
 
     function loginUser(user,pass) {
         event.preventDefault();
@@ -40,9 +40,10 @@ const Login = (props) => {
                 if(!localStorage.getItem("isLoggedIn")){
                     localStorage.setItem("isLoggedIn", true);
                 }
-
-                //set visibility toggle
-                //set logic for the Register button
+                    const newpost = document.querySelector('.newPost');
+                    newpost.style.display = 'inline';
+                    const loginElement = document.querySelector('.login');
+                    loginElement.style.display='none';
             } else {
                 alert("Please try again!");
             }
@@ -54,30 +55,34 @@ const Login = (props) => {
     return (
                 <section className="login">
                     <h1>Please log in to post!</h1>
-                    <form onSubmit={() => {loginUser(username,password)}}>
+                    <form onSubmit={() => {loginUser(loginUsername,loginPassword)}}>
                         <div>
                             <label>Username: </label>
                             <input id="loginUsernameInput" 
                             type="type"
-                            name="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            name="loginUsername"
+                            value={loginUsername}
+                            onChange={(e) => setLoginUsername(e.target.value)}
                             required />
                         </div>
                         <div>
                             <label>Password: </label>
                             <input id="loginPasswordInput" 
                             type="type"
-                            name="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)} 
+                            name="loginPassword"
+                            value={loginPassword}
+                            onChange={(e) => setLoginPassword(e.target.value)} 
                             required />
                         </div>
-                        <button onClick={() => loginUser(username,password)}>Login</button>
+                        <button onClick={() => loginUser(loginUsername,loginPassword)}>Login</button>
                         <br /><br />
                         <p>Not a member?</p>
-                        <button>Register</button>
-                        {/* <Link to="/register" class="linkButton">Register</Link> */}
+                        <button onClick={() => {
+                            const newpost = document.querySelector('.register');
+                            newpost.style.display = 'inline';
+                            const loginElement = document.querySelector('.login');
+                            loginElement.style.display='none';
+                        }}>Register</button>
                     </form>
                 </section>
             )

@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
+//Not being used but leaving in case I change my mind
+import { 
+    BrowserRouter as Router, 
+    Switch, 
+    Link, 
+    Route, 
+    Redirect } from 'react-router-dom';
+
 import { 
     Header,
     Register,
     Login,
-    NewPost
+    NewPost,
+    Profile
 } from './components';
 
 const App = () => {
@@ -18,7 +27,7 @@ const App = () => {
     return <div className="app">
         <Header isAuthenticated={isAuthenticated} userName={userName} setUserName={setUserName} setUserToken={setUserToken} setIsAuthenticated={setIsAuthenticated}/>
         <main>
-            This is the main window where posts will appear
+            <h1>Glad to see you at Stranger's Things!</h1>
         </main>
         <section id="sidebar">
             <Register baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} />
@@ -30,4 +39,5 @@ const App = () => {
         </footer>
         </div>
 }
+
 ReactDOM.render(<App />, document.getElementById('app'));

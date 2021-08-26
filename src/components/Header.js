@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Header = (props) => {
     const { isAuthenticated, userName, setUserName, setUserToken, setIsAuthenticated } = props;
 
@@ -31,9 +32,17 @@ const Header = (props) => {
         setIsAuthenticated(false);
         setUserName("");
         setUserToken("");
+
+        const newpost = document.querySelector('.login');
+        newpost.style.display = 'inline';
+        const loginElement = document.querySelector('.newPost');
+        loginElement.style.display='none';
+
         localStorage.removeItem("usertoken");
         localStorage.removeItem("username");
         localStorage.removeItem("isLoggedIn");
+
+        location.reload();
     }
 
     if(!isAuthenticated) {
