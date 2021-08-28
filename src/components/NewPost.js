@@ -5,10 +5,11 @@ const NewPost = (props) => {
     const [ postTitle, setPostTitle ] = useState(" ");
     const [ postMessage, setPostMessage ] = useState(" ");
     const [ postPrice, setPostPrice] = useState("");
+    const [postLocation, setPostLocation] =useState("");
     const [postDelivery, setPostDelivery] = useState(false);
     //this should only appear if isAuthenticated = true
     //should definitely not work unless it is, too
-    //figure this out AFTER the sendPost functioncre is working successfully
+    //figure this out AFTER the sendPost function is working successfully
 
     //variable testing, will be deleted once sendPost is working correctly
     // if(isAuthenticated) {
@@ -30,7 +31,7 @@ const NewPost = (props) => {
          const sendPost = async() => {
              event.preventDefault();
 
-             console.log('sendingpost', postTitle, postMessage, postPrice);
+             //console.log('sendingpost', postTitle, postMessage, postPrice);
             const response = await fetch(`${baseURL}/posts`, {
                 method: "POST",
                 headers: {
@@ -42,6 +43,7 @@ const NewPost = (props) => {
                 title: postTitle,
                 description: postMessage,
                 price: postPrice,
+                location: postLocation, 
                 willDeliver: false,
               }
                 })
@@ -63,7 +65,7 @@ const NewPost = (props) => {
             //they will need their own getter/setter for each field
             //we will need to decide which fields are required and add that property to the input
             const post = await response.json();
-            console.log("newpost", post);
+            //console.log("newpost", post);
         
         }
 
@@ -98,6 +100,14 @@ const NewPost = (props) => {
                     name="price"
                     value={postPrice}
                     onChange={(e) => setPostPrice(e.target.value)} />
+                </div>
+                <div>
+                    <label>Location: </label><br />
+                    <input id="location"
+                    type="text"
+                    name="location"
+                    value={postLocation}
+                    onChange={(e) => setPostLocation(e.target.value)} />
                 </div>
                 <div>
                     <label>Delivery: </label><br />
