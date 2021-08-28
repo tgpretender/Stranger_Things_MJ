@@ -9,6 +9,7 @@ const Login = (props) => {
     const [ regPassword, setRegPassword ] = useState("");
     const [ logOrReg, setLogOrReg ] = useState(true);
 
+    
     function loginUser(user,pass) {
         event.preventDefault();
 
@@ -116,6 +117,7 @@ const Login = (props) => {
                 </form>
                 <br /><br />
                 <p>Not a member?</p>
+                <br />
                 <button className="regButton" onClick={() => setLogOrReg(false)}>Register</button>
                 </section>
             );

@@ -6,6 +6,7 @@
 body {
     height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
 }
 h2 {
     margin-bottom:10px;
@@ -56,8 +57,8 @@ nav {
 }
 nav button {
     margin-left:10px;
-    background-color:#483B33;
-    color:white;
+    background-color:#a98467;
+    color:black;
 }
 nav button:hover {
     color:#81c3d7;
@@ -66,6 +67,7 @@ main {
     grid-row:2;
     grid-column:1;
     padding:10px;
+    overflow-y:auto;
     background-color:#f0ead2;
 }
 #sidebar {
@@ -80,7 +82,8 @@ main {
     margin-bottom:10px;
 }
 #sidebar button {
-    background-color:#81c3d7;
+    background-color:#2f6690;
+    color:white;
 }
 #sidebar button:hover {
     color:#483B33;
@@ -108,23 +111,41 @@ footer {
     display:flex;
     flex-direction:column;
     justify-content:space-between;
+    margin-bottom:10px;
     padding:10px;
     border:2px solid black;
-
 }
 .postHeading {
     display:flex;
     flex-direction:row;
     justify-content:space-between;
+    align-items:center;
+    padding:10px;
+    background-color:#483b33;
+    color:#81c3d7;
+    border: 5px dashed #2f6690;
+    border-radius:5px;
 }
 .title {
-    background-color:white;
+    font-size:24px;
+    font-weight: bold;
 }
 .author {
-    background-color:white;
     font-style: italic;
 }
 .description {
-    margin-top:5px;
-    background-color:white;
+    margin-top:10px;
+    font-size: 18px;
+}
+.details {
+    margin-top:10px;
+}
+.interact {
+    margin-top:10px;
+    text-align: right;
+}
+.interact button {
+    margin-left:5px;
+    background-color:#2f6690;
+    color:white;
 }

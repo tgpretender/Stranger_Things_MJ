@@ -2,31 +2,7 @@ import React from 'react';
 
 
 const Header = (props) => {
-    const { isAuthenticated, userName, setUserName, setUserToken, setIsAuthenticated } = props;
-
-    //clean this up later for version without repeating the header code, just the buttons. ternary?
-
-    const notLoggedIn = (
-        <header>
-            <img src="http://placekitten.com/80/80" />
-            <h1>Welcome!</h1>
-            <nav>
-                <button>Home</button>
-                <button>Posts</button>
-            </nav>
-        </header>);
-
-    const loggedIn = (
-        <header>
-            <img src="http://placekitten.com/80/80" />
-            <h1>Welcome, {userName}!</h1>
-            <nav>
-                <button>Home</button>
-                <button>Posts</button>
-                <button>Profile</button>
-                <button onClick={() => Logout()}>Log Out</button>
-            </nav>
-        </header>);
+    const { isAuthenticated, userName, setUserName, setUserToken, setIsAuthenticated, setShowProfile } = props;
     
     function Logout() {
         setIsAuthenticated(false);
@@ -40,11 +16,26 @@ const Header = (props) => {
         location.reload();
     }
 
-    if(!isAuthenticated) {
-        return notLoggedIn;
-    } else {
-        return loggedIn
-    }
+    return (
+        <header>
+            <img src="http://placekitten.com/80/80" />
+            { isAuthenticated ? <h1>Welcome, {userName}!</h1> : <h1>Welcome!</h1> }
+            { isAuthenticated && 
+                <nav>
+                    <button onClick={() => location.reload()}>Home</button>
+                    <button onClick={() => setShowProfile(false)}>Posts</button>
+                    <button onClick={() => setShowProfile(true)}>Profile</button>
+                    <button onClick={() => Logout()}>Log Out</button>
+                </nav> 
+            } 
+            { !isAuthenticated && 
+                <nav>
+                    <button onClick={() => location.reload()}>Home</button>
+                    <button onClick={() => setShowProfile(false)}>Posts</button>
+                </nav> 
+            }
+        </header>)
+
 }
 
 export default Header;
