@@ -1,27 +1,21 @@
 import React from 'react'
 
 const GetData = (props) => {
-    const {baseURL} = props;
+    const {initialPosts} = props;
 
-    const response = fetch(`${baseURL}/posts`, {
-        method: "GET",
-        headers: {
-            'Content-Type': "application/json"
-        }
-    })
-    .then(res => res.json())
-    .then(res => res)
-    .catch(err => console.error(err))
+    console.log(initialPosts.active);
 
-    console.log(response);
-    
+    const postTemplate = (
+        <div className="post">
+            <div className="postHeading">
+                <div className="title"><h1>title</h1></div>
+                <div className="author">by author</div>
+            </div>
+            <div className="description">description</div>
+        </div>)
 
-
-
-
-
-    // gatheredPosts.forEach(single => {
-    //     console.log(single);
+    return null;
+}
         // const title = post.title
         // const author = post.author.username;
         // const description = post.description;
@@ -31,18 +25,4 @@ const GetData = (props) => {
         // const price = post.price;
         // const deliver = post.willDeliver;
         
-        // const postTemplate = (
-        // <div className="post">
-        //     <div className="postHeading">
-        //         <div className="title"><h1>{title}</h1></div>
-        //         <div className="author">by {author}</div>
-        //     </div>
-        //     <div className="description">{description}</div>
-        // </div>)
-    // })
-
-    return null;
-}
-
-
 export default GetData;
