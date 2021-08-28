@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const NewPost = (props) => {
-    const { baseURL, userName, isAuthenticated, userToken} = props;
+    const { baseURL, isAuthenticated, userToken} = props;
     const [ postTitle, setPostTitle ] = useState(" ");
     const [ postMessage, setPostMessage ] = useState(" ");
     const [ postPrice, setPostPrice] = useState("");
