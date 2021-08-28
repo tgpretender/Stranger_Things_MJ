@@ -10,11 +10,11 @@ const NewPost = (props) => {
     //figure this out AFTER the sendPost funciton is working successfully
 
     //variable testing, will be deleted once sendPost is working correctly
-    if(isAuthenticated) {
-        console.log("Can post? ", true);
-    } else {
-        console.log("Can post? ", false);
-    }
+    // if(isAuthenticated) {
+    //     console.log("Can post? ", true);
+    // } else {
+    //     console.log("Can post? ", false);
+    // }
     //end of variable testing
 
     function sendPost(title,message) {
