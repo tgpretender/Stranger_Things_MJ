@@ -18,9 +18,22 @@ const Header = (props) => {
 
     return (
         <header>
-        <img src="http://placekitten.com/80/80" />
+            <img src="http://placekitten.com/80/80" />
             { isAuthenticated ? <h1>Welcome, {userName}!</h1> : <h1>Welcome!</h1> }
-            { isAuthenticated ? <nav><button onClick={() => location.reload()}>Home</button><button onClick={() => setShowProfile(false)}>Posts</button><button onClick={() => setShowProfile(true)}>Profile</button><button onClick={() => Logout()}>Log Out</button></nav> : <nav><button onClick={() => location.reload()}>Home</button><button onClick={() => setShowProfile(false)}>Posts</button></nav> }
+            { isAuthenticated && 
+                <nav>
+                    <button onClick={() => location.reload()}>Home</button>
+                    <button onClick={() => setShowProfile(false)}>Posts</button>
+                    <button onClick={() => setShowProfile(true)}>Profile</button>
+                    <button onClick={() => Logout()}>Log Out</button>
+                </nav> 
+            } 
+            { !isAuthenticated && 
+                <nav>
+                    <button onClick={() => location.reload()}>Home</button>
+                    <button onClick={() => setShowProfile(false)}>Posts</button>
+                </nav> 
+            }
         </header>)
 
 }

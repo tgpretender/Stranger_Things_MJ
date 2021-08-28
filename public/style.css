@@ -119,9 +119,11 @@ footer {
     display:flex;
     flex-direction:row;
     justify-content:space-between;
+    align-items:center;
     padding:10px;
     background-color:#483b33;
     color:#81c3d7;
+    border: 5px dashed #2f6690;
     border-radius:5px;
 }
 .title {
@@ -136,5 +138,14 @@ footer {
     font-size: 18px;
 }
 .details {
-    margin-top:5px;
+    margin-top:10px;
+}
+.interact {
+    margin-top:10px;
+    text-align: right;
+}
+.interact button {
+    margin-left:5px;
+    background-color:#2f6690;
+    color:white;
 }

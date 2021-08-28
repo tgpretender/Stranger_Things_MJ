@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 import { 
     Header,
     Login,
-    InitialPosts,
+    Posts,
     NewPost,
-    Profile
+    Profile,
 } from './components';
 
 const App = () => {
@@ -37,7 +37,7 @@ const App = () => {
     return <div className="app">
         <Header isAuthenticated={isAuthenticated} userName={userName} setUserName={setUserName} setUserToken={setUserToken} setIsAuthenticated={setIsAuthenticated} setShowProfile={setShowProfile} />
         <main>
-           { showProfile ? <Profile /> : <InitialPosts initialPosts={initialPosts} /> }
+           { showProfile ? <Profile /> : <Posts baseURL={baseURL} userToken={userToken} initialPosts={initialPosts} isAuthenticated={isAuthenticated} /> }
         </main>
         <section id="sidebar">
             { isAuthenticated ? <NewPost baseURL={baseURL} userToken={userToken} isAuthenticated={isAuthenticated}/> : <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} /> }

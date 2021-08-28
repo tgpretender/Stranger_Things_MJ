@@ -117,6 +117,7 @@ const Login = (props) => {
                 </form>
                 <br /><br />
                 <p>Not a member?</p>
+                <br />
                 <button className="regButton" onClick={() => setLogOrReg(false)}>Register</button>
                 </section>
             );
