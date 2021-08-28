@@ -6,6 +6,7 @@
 body {
     height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
 }
 h2 {
     margin-bottom:10px;
@@ -66,6 +67,7 @@ main {
     grid-row:2;
     grid-column:1;
     padding:10px;
+    overflow-y:auto;
     background-color:#f0ead2;
 }
 #sidebar {
@@ -108,23 +110,30 @@ footer {
     display:flex;
     flex-direction:column;
     justify-content:space-between;
+    margin-bottom:10px;
     padding:10px;
     border:2px solid black;
-
 }
 .postHeading {
     display:flex;
     flex-direction:row;
     justify-content:space-between;
+    padding:10px;
+    background-color:#483b33;
+    color:#81c3d7;
+    border-radius:5px;
 }
 .title {
-    background-color:white;
+    font-size:24px;
+    font-weight: bold;
 }
 .author {
-    background-color:white;
     font-style: italic;
 }
 .description {
+    margin-top:10px;
+    font-size: 18px;
+}
+.details {
     margin-top:5px;
-    background-color:white;
 }

@@ -9,6 +9,7 @@ const Login = (props) => {
     const [ regPassword, setRegPassword ] = useState("");
     const [ logOrReg, setLogOrReg ] = useState(true);
 
+    
     function loginUser(user,pass) {
         event.preventDefault();
 
