@@ -3,7 +3,7 @@ import { useState } from 'react';
 const NewPost = (props) => {
     const { baseURL, userName, isAuthenticated, userToken} = props;
     const [ postTitle, setPostTitle ] = useState(" ");
-    const [ postMessage, setPostMessage ] = useState(" ");
+    const [ postDescription, setPostDescription ] = useState(" ");
     const [ postPrice, setPostPrice] = useState("");
     const [postLocation, setPostLocation] =useState("");
     const [postDelivery, setPostDelivery] = useState(false);
@@ -41,7 +41,7 @@ const NewPost = (props) => {
                 body: JSON.stringify({
              post: {
                 title: postTitle,
-                description: postMessage,
+                description: postDescription,
                 price: postPrice,
                 location: postLocation, 
                 willDeliver: false,
@@ -84,14 +84,14 @@ const NewPost = (props) => {
                     onChange={(e) => setPostTitle(e.target.value)} />
                 </div>
                 <div>
-                    <label>Message: </label><br />
-                    <textarea is="message" 
+                    <label>Description: </label><br />
+                    <textarea is="description" 
                     type="text"
-                    name="message"
+                    name="description"
                     rows="5"
                     cols="23"
-                    value={postMessage}
-                    onChange={(e) => setPostMessage(e.target.value)} />
+                    value={postDescription}
+                    onChange={(e) => setPostDescription(e.target.value)} />
                 </div>
                 <div>
                     <label>Price: </label><br />
