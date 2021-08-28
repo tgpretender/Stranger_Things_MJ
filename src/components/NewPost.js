@@ -8,7 +8,7 @@ const NewPost = (props) => {
     const [postDelivery, setPostDelivery] = useState(false);
     //this should only appear if isAuthenticated = true
     //should definitely not work unless it is, too
-    //figure this out AFTER the sendPost function is working successfully
+    //figure this out AFTER the sendPost functioncre is working successfully
 
     //variable testing, will be deleted once sendPost is working correctly
     // if(isAuthenticated) {
