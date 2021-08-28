@@ -13,8 +13,8 @@ import {
     Header,
     Register,
     Login,
-    NewPost,
-    Profile
+    GetData,
+    NewPost
 } from './components';
 
 const App = () => {
@@ -37,7 +37,7 @@ const App = () => {
     return <div className="app">
         <Header isAuthenticated={isAuthenticated} userName={userName} setUserName={setUserName} setUserToken={setUserToken} setIsAuthenticated={setIsAuthenticated}/>
         <main>
-            <h1>Glad to see you at Stranger's Things!</h1>
+           <GetData baseURL={baseURL} />
         </main>
         <section id="sidebar">
             <Register baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} />

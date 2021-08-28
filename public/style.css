@@ -98,12 +98,45 @@ footer {
     text-align:center;
 }
 .login {
+<<<<<<< HEAD
     display:inline;
+=======
+    display:none;
+>>>>>>> main
+    padding:10px;
+    text-align:center;
+
+}
+.newPost {
+<<<<<<< HEAD
+    display:none;
+=======
+    display:inline;
+>>>>>>> main
     padding:10px;
     text-align:center;
 }
-.newPost {
-    display:none;
+.post {
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
     padding:10px;
-    text-align:center;
+    border:2px solid black;
+
+}
+.postHeading {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+.title {
+    background-color:white;
+}
+.author {
+    background-color:white;
+    font-style: italic;
+}
+.description {
+    margin-top:5px;
+    background-color:white;
 }
