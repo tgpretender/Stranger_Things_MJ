@@ -6,6 +6,15 @@ const Login = (props) => {
     const { baseURL, setUserToken, setUserName, setIsAuthenticated } = props;
     const [ loginUsername, setLoginUsername ] = useState("");
     const [ loginPassword, setLoginPassword ] = useState("");
+    const [ logOrReg, setLogOrReg ] = useState(true);
+
+    
+    
+    if(logOrReg) {
+        console.log(logOrReg)
+    }else {
+        console.log(logOrReg)
+    }
 
     function loginUser(user,pass) {
         event.preventDefault();
@@ -40,10 +49,6 @@ const Login = (props) => {
                 if(!localStorage.getItem("isLoggedIn")){
                     localStorage.setItem("isLoggedIn", true);
                 }
-                    const newpost = document.querySelector('.newPost');
-                    newpost.style.display = 'inline';
-                    const loginElement = document.querySelector('.login');
-                    loginElement.style.display='none';
             } else {
                 alert("Please try again!");
             }
@@ -63,7 +68,7 @@ const Login = (props) => {
                             name="loginUsername"
                             value={loginUsername}
                             onChange={(e) => setLoginUsername(e.target.value)}
-                            required />
+                            />
                         </div>
                         <div>
                             <label>Password: </label>
@@ -72,18 +77,13 @@ const Login = (props) => {
                             name="loginPassword"
                             value={loginPassword}
                             onChange={(e) => setLoginPassword(e.target.value)} 
-                            required />
+                            />
                         </div>
-                        <button onClick={() => loginUser(loginUsername,loginPassword)}>Login</button>
+                        <button className="logButton" onClick={() => loginUser(loginUsername,loginPassword)}>Login</button>
                         <br /><br />
-                        <p>Not a member?</p>
-                        <button onClick={() => {
-                            const newpost = document.querySelector('.register');
-                            newpost.style.display = 'inline';
-                            const loginElement = document.querySelector('.login');
-                            loginElement.style.display='none';
-                        }}>Register</button>
                     </form>
+                    <p>Not a member?</p>
+                        <button className="regButton" onClick={() => setLogOrReg(false)}>Register</button>
                 </section>
             )
 }

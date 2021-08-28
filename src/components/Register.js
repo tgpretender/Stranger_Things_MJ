@@ -38,11 +38,6 @@ const Register = (props) => {
                 if(!localStorage.getItem("isLoggedIn")){
                     localStorage.setItem("isLoggedIn", true);
                 }
-                
-                const newpost = document.querySelector('.newPost');
-                newpost.style.display = 'inline';
-                const loginElement = document.querySelector('.register');
-                loginElement.style.display='none';
             }else {
                 alert("Please try again!");
             }

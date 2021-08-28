@@ -30,7 +30,6 @@ const App = () => {
            <GetData baseURL={baseURL} />
         </main>
         <section id="sidebar">
-            <Register baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} />
             { isAuthenticated ? <NewPost baseURL={baseURL} userName={userName} isAuthenticated={isAuthenticated}/> : <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} /> }
         </section>
         <footer>

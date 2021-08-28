@@ -33,11 +33,6 @@ const Header = (props) => {
         setUserName("");
         setUserToken("");
 
-        const newpost = document.querySelector('.login');
-        newpost.style.display = 'inline';
-        const loginElement = document.querySelector('.newPost');
-        loginElement.style.display='none';
-
         localStorage.removeItem("usertoken");
         localStorage.removeItem("username");
         localStorage.removeItem("isLoggedIn");
