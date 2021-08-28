@@ -5,7 +5,8 @@ import {
     Header,
     Login,
     InitialPosts,
-    NewPost
+    NewPost,
+    Profile
 } from './components';
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
     const [ userToken, setUserToken ] = useState(localStorage.getItem("usertoken"));
     const [ userName, setUserName ] = useState(localStorage.getItem("username"));
     const [ initialPosts, setInitialPosts] = useState([]);
+    const [ showProfile, setShowProfile ] = useState(false);
 
     useEffect(() => {
         fetch(`${baseURL}/posts`, {
@@ -33,9 +35,9 @@ const App = () => {
     }, []);
     
     return <div className="app">
-        <Header isAuthenticated={isAuthenticated} userName={userName} setUserName={setUserName} setUserToken={setUserToken} setIsAuthenticated={setIsAuthenticated}/>
+        <Header isAuthenticated={isAuthenticated} userName={userName} setUserName={setUserName} setUserToken={setUserToken} setIsAuthenticated={setIsAuthenticated} setShowProfile={setShowProfile} />
         <main>
-           <InitialPosts initialPosts={initialPosts} />
+           { showProfile ? <Profile /> : <InitialPosts initialPosts={initialPosts} /> }
         </main>
         <section id="sidebar">
             { isAuthenticated ? <NewPost baseURL={baseURL} userToken={userToken} isAuthenticated={isAuthenticated}/> : <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} /> }

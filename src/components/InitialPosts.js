@@ -26,6 +26,4 @@ const InitialPosts = (props) => {
                 </div>)
         });
 }
-    
-
 export default InitialPosts
