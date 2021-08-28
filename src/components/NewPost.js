@@ -1,33 +1,53 @@
 import { useState } from 'react';
 
 const NewPost = (props) => {
-    const { baseURL, userName, isAuthenticated} = props;
+    const { baseURL, userName, isAuthenticated, userToken} = props;
     const [ postTitle, setPostTitle ] = useState(" ");
     const [ postMessage, setPostMessage ] = useState(" ");
-
+    const [ postPrice, setPostPrice] = useState("");
+    const [postDelivery, setPostDelivery] = useState(false);
     //this should only appear if isAuthenticated = true
     //should definitely not work unless it is, too
-    //figure this out AFTER the sendPost funciton is working successfully
+    //figure this out AFTER the sendPost function is working successfully
 
     //variable testing, will be deleted once sendPost is working correctly
-    if(isAuthenticated) {
-        console.log("Can post? ", true);
-    } else {
-        console.log("Can post? ", false);
-    }
+    // if(isAuthenticated) {
+    //     console.log("Can post? ", true);
+    // } else {
+    //     console.log("Can post? ", false);
+    // }
     //end of variable testing
 
-    function sendPost(title,message) {
-        event.preventDefault();
+
 
         //variable testing, will be deleted once sendPost is working correctly
-        console.log("Current user:", userName);
-        console.log("Title:", title);
-        console.log("Message: ", message);
+        //console.log("Current user:", userName);
+        // console.log("Title:", postTitle);
+        // console.log("Message: ", postMessage);
+         //console.log(userToken);
         //end of variable testing
+        
+         const sendPost = async() => {
+             event.preventDefault();
 
-        function sendPost(title,message) {
-            //look at Register to get an idea of how to go about this
+             console.log('sendingpost', postTitle, postMessage, postPrice);
+            const response = await fetch(`${baseURL}/posts`, {
+                method: "POST",
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${userToken}`
+                },
+                body: JSON.stringify({
+             post: {
+                title: postTitle,
+                description: postMessage,
+                price: postPrice,
+                willDeliver: false,
+              }
+                })
+              });
+
+            
 
             //use fetch to send the post out to baseURL/posts, I think?
             //https://strangers-things.herokuapp.com/api/ is the documentation to check
@@ -42,20 +62,21 @@ const NewPost = (props) => {
             //once this beginning logic works, can add fields to the return for other properties for the posts
             //they will need their own getter/setter for each field
             //we will need to decide which fields are required and add that property to the input
-
+            const post = await response.json();
+            console.log("newpost", post);
         
         }
 
         //once we know this works, possibly display the new post in main after submission?
-    }
+    
 
     return (<div className="newPost">
         <h1>Make a New Post</h1>
-            <form onSubmit={() => {sendPost(postTitle,postMessage)}}>
+            <form onSubmit={sendPost}>
                 <div>
                     <label>Title: </label><br />
                     <input id="title"
-                    type="type"
+                    type="text"
                     name="title"
                     value={postTitle}
                     onChange={(e) => setPostTitle(e.target.value)} />
@@ -63,16 +84,40 @@ const NewPost = (props) => {
                 <div>
                     <label>Message: </label><br />
                     <textarea is="message" 
-                    type="type"
+                    type="text"
                     name="message"
                     rows="5"
                     cols="23"
                     value={postMessage}
                     onChange={(e) => setPostMessage(e.target.value)} />
                 </div>
-                <button onClick={() => sendPost(postTitle,postMessage)}>Submit</button>
+                <div>
+                    <label>Price: </label><br />
+                    <input id="price"
+                    type="text"
+                    name="price"
+                    value={postPrice}
+                    onChange={(e) => setPostPrice(e.target.value)} />
+                </div>
+                <div>
+                    <label>Delivery: </label><br />
+                    <select id=""
+                    type="text"
+                    name="Delivery"
+                    value={postDelivery}
+                    onChange={(e) => setPostDelivery(e.target.value)} >
+                        <option value= {true}>
+                            "yes"
+                        </option>
+                        <option value= {false}>
+                            "no"
+                        </option>
+                        </select>
+                </div> 
+                <button type= "submit">Submit</button>
             </form>
         </div>)
+        
 }
 
 export default NewPost;

@@ -98,13 +98,13 @@ footer {
     text-align:center;
 }
 .login {
-    display:inline;
+    display:none;
     padding:10px;
     text-align:center;
     
 }
 .newPost {
-    display:none;
+    display:inline;
     padding:10px;
     text-align:center;
 }
