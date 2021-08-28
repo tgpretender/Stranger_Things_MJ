@@ -3,7 +3,7 @@ import React from 'react'
 const GetData = (props) => {
     const {initialPosts} = props;
 
-    console.log(initialPosts.active);
+    console.log(initialPosts);
 
     const postTemplate = (
         <div className="post">
@@ -16,13 +16,6 @@ const GetData = (props) => {
 
     return null;
 }
-        // const title = post.title
-        // const author = post.author.username;
-        // const description = post.description;
-        // const created = post.createdAt;
-        // const updated = post.updatedAt;
-        // const location = post.location;
-        // const price = post.price;
-        // const deliver = post.willDeliver;
-        
-export default GetData;
+    
+
+export default GetData
