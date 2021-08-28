@@ -93,18 +93,39 @@ footer {
     border-top: 5px dashed #483b33;
 }
 .register {
-    display:none;
     padding:10px;
     text-align:center;
 }
 .login {
-    display:none;
     padding:10px;
     text-align:center;
-    
+
 }
-.newPost {
-    display:inline;
+.newPost {;
     padding:10px;
     text-align:center;
+}
+.post {
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:10px;
+    border:2px solid black;
+
+}
+.postHeading {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+.title {
+    background-color:white;
+}
+.author {
+    background-color:white;
+    font-style: italic;
+}
+.description {
+    margin-top:5px;
+    background-color:white;
 }
