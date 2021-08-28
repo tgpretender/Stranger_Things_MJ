@@ -98,21 +98,13 @@ footer {
     text-align:center;
 }
 .login {
-<<<<<<< HEAD
     display:inline;
-=======
-    display:none;
->>>>>>> main
     padding:10px;
     text-align:center;
 
 }
 .newPost {
-<<<<<<< HEAD
-    display:none;
-=======
     display:inline;
->>>>>>> main
     padding:10px;
     text-align:center;
 }

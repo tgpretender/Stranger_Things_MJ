@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 
 const Login = (props) => {
-    const { baseURL, setUserToken, setUserName, isAuthenticated, setIsAuthenticated } = props;
+    const { baseURL, setUserToken, setUserName, setIsAuthenticated } = props;
     const [ loginUsername, setLoginUsername ] = useState("");
     const [ loginPassword, setLoginPassword ] = useState("");
 

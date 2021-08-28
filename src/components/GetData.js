@@ -20,10 +20,10 @@ const GetData = (props) => {
     })
     .catch(err => console.error(err))
     
-    console.log('gathered posts: ', gatheredPosts);
+    //console.log('gathered posts: ', gatheredPosts);
     
     gatheredPosts.forEach(single => {
-        console.log(single);
+        //console.log(single);
         // const title = post.title
         // const author = post.author.username;
         // const description = post.description;
@@ -43,7 +43,7 @@ const GetData = (props) => {
         // </div>)
     })
 
-    return gatheredPosts;
+    return null;
 }
 
 
