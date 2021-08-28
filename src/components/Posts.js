@@ -14,9 +14,14 @@ const Posts = (props) => {
             }
         })
             .then(res => res.json())
-            .then(result => console.log(result))
-            .catch(err => console.error(err))
-        return location.reload();
+            .then((result) => { 
+                if(result.success === true){
+                    return location.reload()
+                } else {
+                    alert("You do not have permission to delete this post!");
+                }
+            })
+            .catch(err => console.error(err));
     }
 
     return initialPosts.map((post, index) => {
