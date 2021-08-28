@@ -2,28 +2,26 @@ import React from 'react'
 
 const GetData = (props) => {
     const {baseURL} = props;
-    const gatheredPosts = [];
 
-    fetch(`${baseURL}/posts`, {
+    const response = fetch(`${baseURL}/posts`, {
         method: "GET",
         headers: {
             'Content-Type': "application/json"
         }
     })
     .then(res => res.json())
-    .then((result) => {
-        const response = result.data.posts;
-        // console.log('response: ', response);
-        // response.forEach(post => {
-        //     gatheredPosts.push(post);
-        // })
-    })
+    .then(res => res)
     .catch(err => console.error(err))
+
+    console.log(response);
     
-    console.log('gathered posts: ', gatheredPosts);
-    
-    gatheredPosts.forEach(single => {
-        console.log(single);
+
+
+
+
+
+    // gatheredPosts.forEach(single => {
+    //     console.log(single);
         // const title = post.title
         // const author = post.author.username;
         // const description = post.description;
@@ -41,9 +39,9 @@ const GetData = (props) => {
         //     </div>
         //     <div className="description">{description}</div>
         // </div>)
-    })
+    // })
 
-    return gatheredPosts;
+    return null;
 }
 
 
