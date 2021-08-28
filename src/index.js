@@ -1,17 +1,8 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-//Not being used but leaving in case I change my mind
-import { 
-    BrowserRouter as Router, 
-    Switch, 
-    Link, 
-    Route, 
-    Redirect } from 'react-router-dom';
-
 import { 
     Header,
-    Register,
     Login,
     GetData,
     NewPost

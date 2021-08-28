@@ -93,18 +93,15 @@ footer {
     border-top: 5px dashed #483b33;
 }
 .register {
-    display:none;
     padding:10px;
     text-align:center;
 }
 .login {
-    display:inline;
     padding:10px;
     text-align:center;
 
 }
-.newPost {
-    display:inline;
+.newPost {;
     padding:10px;
     text-align:center;
 }
