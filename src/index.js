@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { 
     Header,
     Login,
-    GetData,
+    InitialPosts,
     NewPost
 } from './components';
 
@@ -35,7 +35,7 @@ const App = () => {
     return <div className="app">
         <Header isAuthenticated={isAuthenticated} userName={userName} setUserName={setUserName} setUserToken={setUserToken} setIsAuthenticated={setIsAuthenticated}/>
         <main>
-           <GetData initialPosts={initialPosts} />
+           <InitialPosts initialPosts={initialPosts} />
         </main>
         <section id="sidebar">
             { isAuthenticated ? <NewPost baseURL={baseURL} userName={userName} isAuthenticated={isAuthenticated}/> : <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} /> }
