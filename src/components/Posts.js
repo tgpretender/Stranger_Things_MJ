@@ -34,9 +34,14 @@ const Posts = (props) => {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${userToken}`
-            }
+            },
+            body: JSON.stringify({
+                description: newMessage
+        })
+        
         })
             .then(res => res.json())
+            .then(result => console.log(result))
             .then((result) => { 
                 if(result.success === true){
                     return console.log("can edit")

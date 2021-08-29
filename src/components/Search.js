@@ -3,27 +3,28 @@ import { useState } from 'react';
 const Search = (props) => {
     const { searchTerm, initialPosts } = props;
     const [ posts, setPosts ] = useState([]);
-    event.preventDefault();
     
     initialPosts.map(post => {
         const title = post["title"]
         const desc = post["description"];
         const author = post["author"];
         const user = author["username"];
+        const temp = []
 
         if(title.includes(searchTerm)) {
-            return title;
+            temp.push(post);
         } else if(desc.includes(searchTerm)) {
-            console.log(post);
+            temp.push(post);
         } else if(user.includes(searchTerm)) {
-            console.log(post);
-        } else {
-            console.log("No matches");
+            temp.push(post);
         }
+        
+        setPosts(temp);
     })
-    
+    console.log(posts);
 
-    return null;
+
+    return <div className="searchResults">Search Results</div>
 }
 
 export default Search;
