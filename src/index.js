@@ -19,6 +19,7 @@ const App = () => {
     const [ userName, setUserName ] = useState(localStorage.getItem("username"));
     const [ initialPosts, setInitialPosts] = useState([]);
     const [ searchTerm, setSearchTerm ] = useState('');
+    const [ postMatches, setPostMatches ] = useState('')
 
     useEffect(() => {
         fetch(`${baseURL}/posts`, {
@@ -51,7 +52,7 @@ const App = () => {
                     <Posts baseURL={baseURL} userName={userName} userToken={userToken} initialPosts={initialPosts} isAuthenticated={isAuthenticated} />
                 </Route>
                 <Route path="/search">
-                    <Search searchTerm={searchTerm} initialPosts={initialPosts} />
+                    <Search postMatches={postMatches} />
                 </Route>
                 <Route>
                     <h1>404 Page not found!</h1>
@@ -61,7 +62,7 @@ const App = () => {
         <section id="sidebar">
             { isAuthenticated ? <NewPost baseURL={baseURL} userToken={userToken} isAuthenticated={isAuthenticated}/> : <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} /> }
         </section>
-        <Footer searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <Footer searchTerm={searchTerm} setSearchTerm={setSearchTerm} initialPosts={initialPosts} setPostMatches={setPostMatches} />
         </div></Router>
 }
 const home = () => (
