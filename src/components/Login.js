@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
 
 const Login = (props) => {
     const { baseURL, setUserToken, setUserName, setIsAuthenticated } = props;

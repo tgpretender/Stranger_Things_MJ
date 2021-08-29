@@ -1,22 +1,45 @@
-import React from 'react';
+import { useState } from 'react';
+import { render } from 'react-dom';
 
 const Search = (props) => {
-    const { postMatches } = props;
+    const { initialPosts } = props;
+    const [ searchTerm, setSearchTerm ] = useState('');
+    const [ postMatches, setPostMatches ] = useState('')
 
-    const renderSearch = () => {
+    // async function renderSearch(term) {
+    //     initialPosts.forEach((post) => {
+    //         event.preventDefault();
+    //         const { _id: ID, author: {username}, active, createdAt, description, location, price, title, updatedAt, willDeliver} = post;
+    //         const dayCreated = createdAt.slice(0,10);
+    //         const timeCreated = createdAt.slice(11,16);
+    //         const dayUpdated = updatedAt.slice(0,10);
+    //         const timeUpdated = updatedAt.slice(11,16);
 
-        postMatches.forEach(() => {
-            const { _id: ID, author: {username}, active, createdAt, description, location, price, title, updatedAt, willDeliver} = post;
-            const dayCreated = createdAt.slice(0,10);
-            const timeCreated = createdAt.slice(11,16);
-            const dayUpdated = updatedAt.slice(0,10);
-            const timeUpdated = updatedAt.slice(11,16);
+    //         if(description.includes(term)) {
+    //             console.log(post);
+    //         }else if(title.includes(term)) {
+    //             console.log(post);
+    //         }else if(username.includes(term)) {
+    //             console.log(post)
+    //         }
             
-            console.log(title);
-        })        
-    }
+    //     })        
+    // }
 
-    return <h1>Search</h1>;
+    return (
+        <div className="search">
+        <form>
+            <label>Keyword:</label>
+            <input className="searc" id="searchTerm" 
+                type="type"
+                name="searchTerm"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            {/* <button onClick={()=> renderSearch("test")}>Submit</button> */}
+        </form>
+        <div className="return"></div>
+        </div>)
 }
 
 export default Search;

@@ -23,10 +23,13 @@ const NewPost = (props) => {
                     description: postDescription,
                     price: postPrice,
                     location: postLocation, 
-                    willDeliver: false,
+                    willDeliver: postDelivery,
                 }
             })
-        });
+        })
+        .then((response) => {
+            location.reload();
+        })
 
         const post = await response.json();
     }
