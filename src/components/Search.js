@@ -1,38 +1,29 @@
 import { useState } from 'react';
 
 const Search = (props) => {
-    const { searchTerm } = props;
+    const { searchTerm, initialPosts } = props;
     const [ posts, setPosts ] = useState([]);
     event.preventDefault();
+    
+    initialPosts.map(post => {
+        const title = post["title"]
+        const desc = post["description"];
+        const author = post["author"];
+        const user = author["username"];
 
+        if(title.includes(searchTerm)) {
+            return title;
+        } else if(desc.includes(searchTerm)) {
+            console.log(post);
+        } else if(user.includes(searchTerm)) {
+            console.log(post);
+        } else {
+            console.log("No matches");
+        }
+    })
+    
 
-
-    return (
-    <div className="searchResults">
-        Post
-        {/* { postsToDisplay.map((post, index) => {
-                    const { _id: ID, author: {username}, createdAt, description, location, price, title, updatedAt, willDeliver} = post;
-                    const dayCreated = createdAt.slice(0,10);
-                    const timeCreated = createdAt.slice(11,16);
-                    const dayUpdated = updatedAt.slice(0,10);
-                    const timeUpdated = updatedAt.slice(11,16);
-            
-                    return (<div key={index} className="post">
-                                <div className="postHeading">
-                                    <div className="title">{title}</div>
-                                    <div className="author">{username}</div>
-                                </div>
-                                <div className="description">{description}</div>
-                                <div className="details">
-                                    <p><b>Location</b>: {location}</p>
-                                    <p><b>Price:</b> {price}</p>
-                                    <p><b>Will Deliver:</b> {willDeliver ? 'Yes' : 'No'}</p>
-                                    <p><b>Created:</b> {dayCreated}, {timeCreated}</p>
-                                    <p><b>Updated:</b> {dayUpdated}, {timeUpdated}</p>
-                                </div>
-                            </div>)
-                })} */}
-    </div>);
+    return null;
 }
 
 export default Search;

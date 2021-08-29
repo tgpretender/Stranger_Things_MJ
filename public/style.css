@@ -36,6 +36,7 @@ button {
     grid-template-columns: 1fr 20%;
     grid-template-rows: 15% 1fr 10%;
     overflow: hidden;
+    overflow-wrap: break-word;
     height: 100%;
     width: 100%;
     background-color:gray;

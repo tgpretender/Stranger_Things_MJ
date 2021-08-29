@@ -43,7 +43,7 @@ const App = () => {
             { showHome && <h1>Glad to have you at Stranger's Things!</h1>}
             { showProfile && <Profile baseURL={baseURL} userToken={userToken} userName={userName} /> }
             { showPosts && <Posts baseURL={baseURL} userToken={userToken} initialPosts={initialPosts} isAuthenticated={isAuthenticated} /> }
-            { showSearch && <Search searchTerm={searchTerm} />}
+            { showSearch && <Search searchTerm={searchTerm} initialPosts={initialPosts} />}
         </main>
         <section id="sidebar">
             { isAuthenticated ? <NewPost baseURL={baseURL} userToken={userToken} isAuthenticated={isAuthenticated}/> : <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} /> }
