@@ -33,7 +33,7 @@ const Profile = (props) => {
                     const timeCreated = createdAt.slice(11,16);
                     const dayUpdated = updatedAt.slice(0,10);
                     const timeUpdated = updatedAt.slice(11,16);
-            
+                    if(active) {
                     return (<div key={index} className="post">
                                 <div className="postHeading">
                                     <div className="title">{title}</div>
@@ -48,9 +48,8 @@ const Profile = (props) => {
                                     <p><b>Created:</b> {dayCreated}, {timeCreated}</p>
                                     <p><b>Updated:</b> {dayUpdated}, {timeUpdated}</p>
                                     <br />
-                                    { !active && <div className="deleted">DELETED</div> }
                                 </div>
-                            </div>)
+                            </div>)}
                 })}
             </div>
             <div className="profileMessages">
