@@ -1,7 +1,7 @@
 import { useState} from 'react'
 
 const Posts = (props) => {
-    const {baseURL, userToken, initialPosts, isAuthenticated} = props;
+    const {baseURL, userName, userToken, initialPosts, isAuthenticated} = props;
     const [ showEditBlock, setShowEditBlock ] = useState(false);
     const [ newMessage, setNewMessage ] = useState("")
 
@@ -55,7 +55,6 @@ const Posts = (props) => {
         const timeCreated = createdAt.slice(11,16);
         const dayUpdated = updatedAt.slice(0,10);
         const timeUpdated = updatedAt.slice(11,16);
-
         return (<div key={index} className="post">
                     <div className="postHeading">
                         <div className="title">{title}</div>
@@ -76,7 +75,7 @@ const Posts = (props) => {
                             <button>Message</button>
                         </div>
                     }
-                    { showEditBlock && <div className="editBlock">
+                    { showEditBlock && <div key={index} className="editBlock">
                         
                             <label>New Description: </label><br />
                             <textarea is="message" 
@@ -85,7 +84,7 @@ const Posts = (props) => {
                                 rows="5"
                                 value={newMessage}
                                 onChange={(e) => setNewMessage(e.target.value)} />
-                            <button>Submit</button>
+                            <button onClick={() => Edit({ID})}>Submit</button>
                         </div>
                     }
                 </div>)

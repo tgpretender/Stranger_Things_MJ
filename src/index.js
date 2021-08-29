@@ -42,7 +42,7 @@ const App = () => {
         <main>
             { showHome && <h1>Glad to have you at Stranger's Things!</h1>}
             { showProfile && <Profile baseURL={baseURL} userToken={userToken} userName={userName} /> }
-            { showPosts && <Posts baseURL={baseURL} userToken={userToken} initialPosts={initialPosts} isAuthenticated={isAuthenticated} /> }
+            { showPosts && <Posts baseURL={baseURL} userName={userName} userToken={userToken} initialPosts={initialPosts} isAuthenticated={isAuthenticated} /> }
             { showSearch && <Search searchTerm={searchTerm} initialPosts={initialPosts} />}
         </main>
         <section id="sidebar">
