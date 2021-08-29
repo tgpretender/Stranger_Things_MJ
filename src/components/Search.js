@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const Search = () => {
     const [posts, setPosts] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
+
 
     function postMatches(post, text) {
   // return true if any of the fields you want to check against include the text
@@ -17,18 +17,7 @@ const Search = () => {
 
 
 
-    return (
-        <div className="search">
-            <label>Search Posts: </label>
-            <br /><br />
-            <input id="searchTerm" 
-                type="type"
-                name="searchTerm"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-            />
-        </div>
-    );
+    return <h1>Search Results</h1>;
 }
 
 export default Search;

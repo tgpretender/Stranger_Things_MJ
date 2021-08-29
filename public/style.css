@@ -25,9 +25,6 @@ textarea {
 label {
     font-weight: bold;
 }
-.search label {
-    color:white;
-}
 button {
     padding:5px;
 }
@@ -98,13 +95,6 @@ main {
 #sidebar button:hover {
     color:#483B33;
 }
-footer {
-    grid-row:3;
-    grid-column:1/ -1;
-    padding:10px;
-    background-color:#2f6690;
-    border-top: 5px dashed #483b33;
-}
 .register {
     padding:10px;
     text-align:center;
@@ -158,4 +148,35 @@ footer {
     margin-left:5px;
     background-color:#2f6690;
     color:white;
+}
+footer {
+    grid-row:3;
+    grid-column:1/ -1;
+    padding:10px;
+    background-color:#2f6690;
+    border-top: 5px dashed #483b33;
+}
+
+.search {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+.search input {
+    flex-grow: 2;
+}
+.search label {
+    flex-grow:1;
+    margin-top: -10px;
+    color:white;
+}
+.search button {
+    flex-grow:1;
+    margin-top: -10px;
+    margin-left:10px;
+    background-color:#a98467;
+    color:black;
+}
+.search button:hover {
+    color:#81c3d7;
 }

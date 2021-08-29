@@ -19,6 +19,7 @@ const App = () => {
     const [ userName, setUserName ] = useState(localStorage.getItem("username"));
     const [ initialPosts, setInitialPosts] = useState([]);
     const [ showProfile, setShowProfile ] = useState(false);
+    const [ searchTerm, setSearchTerm ] = useState('');
 
     useEffect(() => {
         fetch(`${baseURL}/posts`, {
@@ -45,7 +46,17 @@ const App = () => {
             { isAuthenticated ? <NewPost baseURL={baseURL} userToken={userToken} isAuthenticated={isAuthenticated}/> : <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} /> }
         </section>
         <footer>
-            <Search />
+            <div className="search">
+                <label>Keyword:&nbsp;</label>
+                <br /><br />
+                <input id="searchTerm" 
+                    type="type"
+                    name="searchTerm"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <button>Search</button>
+        </div>
         </footer>
         </div>
 }
