@@ -115,6 +115,11 @@ footer {
     padding:10px;
     border:2px solid black;
 }
+.deleted {
+    color:red;
+    font-weight:bold;
+    text-align:right;
+}
 .postHeading {
     display:flex;
     flex-direction:row;
