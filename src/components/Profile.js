@@ -32,7 +32,7 @@ const Profile = (props) => {
             <div className="profilePosts">
                 <h2>My Posts</h2>
                 {userPosts.map((post, index) => {
-                    const { _id: ID, author: {username}, createdAt, description, location, price, title, updatedAt, willDeliver} = post;
+                    const { _id: ID, author: {username}, active, createdAt, description, location, price, title, updatedAt, willDeliver} = post;
                     const dayCreated = createdAt.slice(0,10);
                     const timeCreated = createdAt.slice(11,16);
                     const dayUpdated = updatedAt.slice(0,10);
@@ -50,6 +50,8 @@ const Profile = (props) => {
                                     <p><b>Will Deliver:</b> {willDeliver ? 'Yes' : 'No'}</p>
                                     <p><b>Created:</b> {dayCreated}, {timeCreated}</p>
                                     <p><b>Updated:</b> {dayUpdated}, {timeUpdated}</p>
+                                    <br />
+                                    { !active && <div className="deleted">DELETED</div> }
                                 </div>
                             </div>)
                 })}
