@@ -12,8 +12,10 @@ const Footer = (props) => {
                         type="type"
                         name="searchTerm"
                         value={searchTerm}
+                        minLength="2"
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
+                    
                     <NavLink className="NavLink" exact to="/search">Search</NavLink>
                 </form>
             </div>
