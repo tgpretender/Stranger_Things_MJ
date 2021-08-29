@@ -1,7 +1,48 @@
-import React from 'react'
+import React from 'react';
+import { useState, useHistory} from 'react';
+
 
 const Posts = (props) => {
     const {baseURL, userToken, initialPosts, isAuthenticated} = props;
+    const [ postMessage, setPostMessage ] = useState(" ");
+ 
+
+
+        //  const sendMessage = () => {
+        //     fetch(`${baseURL}/posts/POST_ID/messages`, {
+        //         method: "POST",
+        //         headers: {
+        //           'Content-Type': 'application/json',
+        //           'Authorization': `Bearer ${userToken}`
+        //         },
+        //         body: JSON.stringify({
+        //           message: {
+        //             content: postMessage
+        //           }
+        //         })
+        //       }).then(response => response.json())
+        //         .then(result => {
+        //           console.log(result);
+        //         })
+        //         .catch(console.error);
+
+        //         return (<div className="newMessage">
+        //     <h1>Send A Message</h1>
+        //         <form onSubmit={sendMessage}>
+        //             <div>
+        //                 <label>Message: </label><br />
+        //                 <input id="message"
+        //                 type="text"
+        //                 name="message"
+        //                 value={postMessage}
+        //                 onChange={(e) => setPostMessage(e.target.value)} />
+        //             </div>
+        //             <button type= "submit">Submit</button>
+        //         </form>
+        //     </div>
+        //     )
+        //     }
+
 
     async function Delete(ID) {
         const postID = ID.ID;
