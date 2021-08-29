@@ -87,7 +87,6 @@ const NewPost = (props) => {
                     type="text"
                     name="message"
                     rows="5"
-                    cols="23"
                     value={postMessage}
                     onChange={(e) => setPostMessage(e.target.value)} />
                 </div>

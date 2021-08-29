@@ -17,6 +17,16 @@ h3 {
 input {
     margin-bottom:10px;
     padding:5px;
+    width:100%;
+}
+textarea {
+    width:100%
+}
+label {
+    font-weight: bold;
+}
+.search label {
+    color:white;
 }
 button {
     padding:5px;

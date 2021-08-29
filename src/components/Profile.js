@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 
 const Profile = (props) => {
     const { baseURL, userToken, userName } = props;
-    const [ userMessages, setUserMessages ] = useState([])
-    const [ userPosts, setUserPosts ] = useState([])
+    const [ userPosts, setUserPosts ] = useState([]);
+    const [ userMessages, setUserMessages ] = useState([]);
 
     useEffect(() => {
         fetch(`${baseURL}/users/me`, {

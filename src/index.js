@@ -7,6 +7,7 @@ import {
     Posts,
     NewPost,
     Profile,
+    Search
 } from './components';
 
 const App = () => {
@@ -44,7 +45,7 @@ const App = () => {
             { isAuthenticated ? <NewPost baseURL={baseURL} userToken={userToken} isAuthenticated={isAuthenticated}/> : <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} /> }
         </section>
         <footer>
-            This will be for searching
+            <Search />
         </footer>
         </div>
 }
