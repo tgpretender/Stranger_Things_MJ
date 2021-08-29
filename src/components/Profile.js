@@ -44,6 +44,7 @@ const Profile = (props) => {
                                     <p><b>Location</b>: {location}</p>
                                     <p><b>Price:</b> {price}</p>
                                     <p><b>Will Deliver:</b> {willDeliver ? 'Yes' : 'No'}</p>
+                                    <br />
                                     <p><b>Created:</b> {dayCreated}, {timeCreated}</p>
                                     <p><b>Updated:</b> {dayUpdated}, {timeUpdated}</p>
                                     <br />
