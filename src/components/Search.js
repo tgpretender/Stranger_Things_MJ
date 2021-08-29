@@ -1,23 +1,38 @@
 import { useState } from 'react';
 
-const Search = () => {
-    const [posts, setPosts] = useState([]);
-
-
-    function postMatches(post, text) {
-  // return true if any of the fields you want to check against include the text
-  // strings have an .includes() method 
-    }
-
-    const filteredPosts = posts.filter(post => postMatches(post, searchTerm));
-    const postsToDisplay = searchTerm.length ? filteredPosts : posts;
-
-// then, in our jsx below... map over postsToDisplay instead of posts
+const Search = (props) => {
+    const { searchTerm } = props;
+    const [ posts, setPosts ] = useState([]);
+    event.preventDefault();
 
 
 
-
-    return <h1>Search Results</h1>;
+    return (
+    <div className="searchResults">
+        Post
+        {/* { postsToDisplay.map((post, index) => {
+                    const { _id: ID, author: {username}, createdAt, description, location, price, title, updatedAt, willDeliver} = post;
+                    const dayCreated = createdAt.slice(0,10);
+                    const timeCreated = createdAt.slice(11,16);
+                    const dayUpdated = updatedAt.slice(0,10);
+                    const timeUpdated = updatedAt.slice(11,16);
+            
+                    return (<div key={index} className="post">
+                                <div className="postHeading">
+                                    <div className="title">{title}</div>
+                                    <div className="author">{username}</div>
+                                </div>
+                                <div className="description">{description}</div>
+                                <div className="details">
+                                    <p><b>Location</b>: {location}</p>
+                                    <p><b>Price:</b> {price}</p>
+                                    <p><b>Will Deliver:</b> {willDeliver ? 'Yes' : 'No'}</p>
+                                    <p><b>Created:</b> {dayCreated}, {timeCreated}</p>
+                                    <p><b>Updated:</b> {dayUpdated}, {timeUpdated}</p>
+                                </div>
+                            </div>)
+                })} */}
+    </div>);
 }
 
 export default Search;

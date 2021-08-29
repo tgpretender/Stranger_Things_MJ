@@ -135,6 +135,7 @@ main {
 }
 .description {
     margin-top:10px;
+    overflow: hidden;
     font-size: 18px;
 }
 .details {
@@ -157,7 +158,7 @@ footer {
     border-top: 5px dashed #483b33;
 }
 
-.search {
+.search form {
     display:flex;
     justify-content: center;
     align-items:center;
@@ -168,6 +169,7 @@ footer {
 .search label {
     flex-grow:1;
     margin-top: -10px;
+    margin-right:10px;
     color:white;
 }
 .search button {

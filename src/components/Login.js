@@ -85,7 +85,7 @@ const Login = (props) => {
                     localStorage.setItem("isLoggedIn", true);
                 }
             }else {
-                alert("This user is already created or there is an empty field. Try again!");
+                alert("This user already exists, the username or password are too short, or there is an empty field. Try again!");
             }
         })
         .catch(err => console.error(err))
@@ -131,6 +131,7 @@ const Login = (props) => {
                     <input id="usernameInput" 
                         type="type"
                         name="username"
+                        minLength="2"
                         value={regUsername}
                         onChange={(e) => setRegUsername(e.target.value)} 
                     />
@@ -140,6 +141,7 @@ const Login = (props) => {
                     <input id="passwordInput" 
                         type="type"
                         name="password"
+                        minLength="2"
                         value={regPassword}
                         onChange={(e) => setRegPassword(e.target.value)} 
                     />
