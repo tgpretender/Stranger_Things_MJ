@@ -61,22 +61,26 @@ header img {
     border-radius:40px;
 }
 nav {
+    width:auto;
     text-align:right;
 }
-nav button {
+nav button, .NavLink {
     margin-left:10px;
     background-color:#a98467;
     color:black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #BDA089 black black #BDA089;
 }
-nav button:hover {
+nav button:hover, .NavLink:hover {
     color:#81c3d7;
 }
+nav button:active, .NavLink:active {
+    border-color: black #BDA089 #BDA089 black;
+}
 .NavLink {
-    margin-left:10px;
     padding:5px;
     text-decoration: none;
-    background-color:#a98467;
-    color:black;
 }
 main {
     grid-row:2;
@@ -181,17 +185,10 @@ footer {
 }
 .search label {
     flex-grow:1;
-    margin-top: -10px;
+    margin-top: -15px;
     margin-right:10px;
     color:white;
 }
-.search button {
-    flex-grow:1;
+Footer .NavLink {
     margin-top: -10px;
-    margin-left:10px;
-    background-color:#a98467;
-    color:black;
-}
-.search button:hover {
-    color:#81c3d7;
 }

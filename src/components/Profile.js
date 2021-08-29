@@ -22,13 +22,9 @@ const Profile = (props) => {
         .catch(err => console.error(err))
     }, []);
 
-        userPosts.forEach(posts => {
-
-        });
-
     return (<div className="profile">
             <h1>{userName}'s Profile</h1>
-
+            <br />
             <div className="profilePosts">
                 <h2>My Posts</h2>
                 {userPosts.map((post, index) => {
