@@ -26,8 +26,9 @@ const Posts = (props) => {
             .catch(err => console.error(err));
     }
 
-    async function Edit(ID) {
+    async function Edit(ID, message) {
         const postID = ID.ID;
+        event.preventDefault();
 
         const response = await fetch(`${baseURL}/posts/${postID}`, {
             method: "PATCH",
@@ -36,18 +37,19 @@ const Posts = (props) => {
               'Authorization': `Bearer ${userToken}`
             },
             body: JSON.stringify({
-                description: newMessage
+                description: message,
         })
         
         })
             .then(res => res.json())
             .then(result => console.log(result))
             .then((result) => { 
-                if(result.success === true){
-                    return console.log("can edit")
-                } else {
-                    alert("You do not have permission to edit this post!");
-                }
+                console.log(result.success);
+                // if(result.success === true){
+                //     return console.log("can edit")
+                // } else {
+                //     alert("You do not have permission to edit this post!");
+                // }
             })
             .catch(err => console.error(err));
 
@@ -81,15 +83,16 @@ const Posts = (props) => {
                         </div>
                     }
                     { showEditBlock && <div key={index} className="editBlock">
-                        
-                            <label>New Description: </label><br />
-                            <textarea is="message" 
-                                type="text"
-                                name="message"
-                                rows="5"
-                                value={newMessage}
-                                onChange={(e) => setNewMessage(e.target.value)} />
-                            <button onClick={() => Edit({ID})}>Submit</button>
+                            <form>
+                                <label>New Description: </label><br />
+                                <textarea is="message" 
+                                    type="text"
+                                    name="message"
+                                    rows="5"
+                                    value={newMessage}
+                                    onChange={(e) => setNewMessage(e.target.value)} />
+                                <button onClick={() => Edit({ID, newMessage})}>Submit</button>
+                            </form>
                         </div>
                     }
                 </div>)

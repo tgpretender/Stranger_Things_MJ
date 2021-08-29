@@ -3,6 +3,8 @@ import { useState } from 'react';
 const Search = (props) => {
     const { searchTerm, initialPosts } = props;
     const [ posts, setPosts ] = useState([]);
+
+    event.preventDefault();
     
     initialPosts.map(post => {
         const title = post["title"]

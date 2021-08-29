@@ -71,6 +71,13 @@ nav button {
 nav button:hover {
     color:#81c3d7;
 }
+.NavLink {
+    margin-left:10px;
+    padding:5px;
+    text-decoration: none;
+    background-color:#a98467;
+    color:black;
+}
 main {
     grid-row:2;
     grid-column:1;

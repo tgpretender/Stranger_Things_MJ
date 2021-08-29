@@ -1,5 +1,5 @@
 import React from 'react';
-import Posts from './Posts';
+import { NavLink } from "react-router-dom";
 
 
 const Header = (props) => {
@@ -17,36 +17,22 @@ const Header = (props) => {
         location.reload();
     }
 
-    function PostsButton() {
-        setShowPosts(true);
-        setShowProfile(false);
-        setShowSearch(false);
-        setShowHome(false)
-    }
-    
-    function ProfileButton() {
-        setShowPosts(false);
-        setShowProfile(true);
-        setShowSearch(false);
-        setShowHome(false)
-    }
-
     return (
         <header>
             <img src="http://placekitten.com/80/80" />
             { isAuthenticated ? <h1>Welcome, {userName}!</h1> : <h1>Welcome!</h1> }
             { isAuthenticated && 
                 <nav>
-                    <button onClick={() => location.reload()}>Home</button>
-                    <button onClick={() => PostsButton()}>Posts</button>
-                    <button onClick={() => ProfileButton()}>Profile</button>
+                    <NavLink className="NavLink" exact to="/">Home</NavLink>
+                    <NavLink className="NavLink" to="/posts">Posts</NavLink>
+                    <NavLink className="NavLink" to="/profile">Profile</NavLink>
                     <button onClick={() => Logout()}>Log Out</button>
                 </nav> 
             } 
             { !isAuthenticated && 
                 <nav>
-                    <button onClick={() => location.reload()}>Home</button>
-                    <button onClick={() => PostsButton()}>Posts</button>
+                    <NavLink className="NavLink" exact to="/">Home</NavLink>
+                    <NavLink className="NavLink" to="/posts">Posts</NavLink>
                 </nav> 
             }
         </header>)

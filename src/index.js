@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router, Switch, Link, Route} from 'react-router-dom';
 
 import { 
     Header,
@@ -36,14 +37,29 @@ const App = () => {
         })
         .catch(err => console.error(err))
     }, []);
+
     
-    return <div className="app">
+    return <Router><div className="app">
         <Header isAuthenticated={isAuthenticated} userName={userName} setUserName={setUserName} setUserToken={setUserToken} setIsAuthenticated={setIsAuthenticated} setShowPosts={setShowPosts} setShowProfile={setShowProfile} setShowSearch={setShowSearch} setShowHome={setShowHome}/>
         <main>
-            { showHome && <h1>Glad to have you at Stranger's Things!</h1>}
-            { showProfile && <Profile baseURL={baseURL} userToken={userToken} userName={userName} /> }
-            { showPosts && <Posts baseURL={baseURL} userName={userName} userToken={userToken} initialPosts={initialPosts} isAuthenticated={isAuthenticated} /> }
-            { showSearch && <Search searchTerm={searchTerm} initialPosts={initialPosts} />}
+            <Switch>
+
+                <Route exact path="/">
+                    <h1>Glad to have you at Stranger's Things!</h1>
+                </Route>
+                <Route path="/profile">
+                    <Profile baseURL={baseURL} userToken={userToken} userName={userName} />
+                </Route>
+                <Route path="/posts">
+                    <Posts baseURL={baseURL} userName={userName} userToken={userToken} initialPosts={initialPosts} isAuthenticated={isAuthenticated} />
+                </Route>
+                <Route path="/search">
+                    <Search searchTerm={searchTerm} initialPosts={initialPosts} />
+                </Route>
+                <Route>
+                    <h1>404 Page not found!</h1>
+                </Route>
+            </Switch>
         </main>
         <section id="sidebar">
             { isAuthenticated ? <NewPost baseURL={baseURL} userToken={userToken} isAuthenticated={isAuthenticated}/> : <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} /> }
@@ -74,7 +90,19 @@ const App = () => {
                 </form>
         </div>
         </footer>
-        </div>
+        </div></Router>
 }
+const home = () => (
+    <h1>Showing Home</h1>
+)
+const prof = () => (
+	<h1>Showing Profile</h1>
+)
+const post =() => (
+    <h1>Showing Posts</h1>
+)
+const search =() => (
+    <h1>Showing SearchResults</h1>
+)
 
 ReactDOM.render(<App />, document.getElementById('app'));
