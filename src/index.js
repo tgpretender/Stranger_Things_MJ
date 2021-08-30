@@ -45,6 +45,9 @@ const App = () => {
                 <Route exact path="/">
                     <h1>Glad to have you at Stranger's Things!</h1>
                 </Route>
+                <Route path="/profile">
+                    <Profile baseURL={baseURL} userToken={userToken} userName={userName} />
+                </Route>
                 <Route path="/messages/:id" children={<Messages baseURL={baseURL} userName={userName} userToken={userToken} isAuthenticated={isAuthenticated} />} /
                 >
                 <Route path="/posts">
@@ -53,9 +56,7 @@ const App = () => {
                 <Route path="/search">
                     <Search initialPosts={initialPosts}/>
                 </Route>
-                <Route path="/edit">
-                    <Edit baseURL={baseURL} userToken={userToken}/>
-                </Route>
+                <Route path="/edit/:id" children={<Edit baseURL={baseURL} userToken={userToken} />} / >
                 <Route>
                     <h1>404 Page not found!</h1>
                 </Route>

@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Edit = (props) => {
     const { baseURL, userToken } = props;
     const [ newDesc, setNewDesc ] = useState("")
+    const { id } = useParams();
 
     const EditPost = (event) => {
         event.preventDefault()

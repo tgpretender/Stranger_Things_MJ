@@ -66,15 +66,16 @@ const Profile = (props) => {
                 <h2>My Messages</h2>
                 {
                     userMessages.map((message, index) => {
-                        const { fromUser: { username }, post: {title}} = message;
+                        const { fromUser: { username }, post: {title}, content} = message;
 
                         return (
                             <div key={index} className="post">
                                 <div className="message">
                                     <div className="postHeading">
-                                        <div className="title">{username}</div>
+                                        <div className="title">From: {username}</div>
+                                        <div className="author">On: {title}</div>
                                     </div>
-                                    <div className="description">{title}</div>
+                                    <div className="description">{content}</div>
                                 </div>
                             </div>
                         )
