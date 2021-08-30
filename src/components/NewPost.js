@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const NewPost = (props) => {
-    const { baseURL, isAuthenticated, userToken} = props;
+    const { baseURL, userToken} = props;
     const [ postTitle, setPostTitle ] = useState(" ");
     const [ postDescription, setPostDescription ] = useState(" ");
     const [ postPrice, setPostPrice ] = useState("");
@@ -77,7 +77,6 @@ const NewPost = (props) => {
                     name="Delivery"
                     value={postDelivery}
                     onChange={(e) => setPostDelivery(e.target.value)} >
-                        {/* Returning false regardless, figure it out later */}
                         <option value= {true}>
                             Yes
                         </option>

@@ -19,7 +19,6 @@ const Profile = (props) => {
             const response = result.data;
             setUserPosts(response.posts);
             setUserMessages(response.messages);
-            console.log(response.messages);
         })
         .catch(err => console.error(err))
     }, []);

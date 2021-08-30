@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 
 import { 
@@ -66,7 +66,7 @@ const App = () => {
             { isAuthenticated ? <NewPost baseURL={baseURL} userToken={userToken} isAuthenticated={isAuthenticated}/> : <Login baseURL={baseURL} setUserToken={setUserToken} setUserName={setUserName} setIsAuthenticated={setIsAuthenticated} /> }
         </section>
         <footer>
-            <NavLink className="NavLink" exact to="/search">Search Posts</NavLink>
+            <Link className="NavLink" exact to="/search">Search Posts</Link>
         </footer>
         </div></Router>
 }

@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Messages = (props) => {
-    const { baseURL, userName, isAuthenticated, userToken} = props;
+    const { baseURL, userToken} = props;
     const [ postMessage, setPostMessage ] = useState("");
     const { id } = useParams();
 
@@ -14,7 +14,6 @@ const Messages = (props) => {
          const sendMessage = (event) => {
            event.preventDefault();
 
-           console.log(id)
             fetch(`${baseURL}/posts/${id}/messages`, {
                 method: "POST",
                 headers: {
@@ -28,7 +27,6 @@ const Messages = (props) => {
                 })
               }).then(response => response.json())
                 .then(result => {
-                  console.log(result);
                   setPostMessage('');
                   notify();
                 })
@@ -47,7 +45,9 @@ const Messages = (props) => {
                         value={postMessage}
                         onChange={(e) => setPostMessage(e.target.value)} />
                     </div>
-                    <button type="submit" disabled={postMessage === "" ? true : false}>Submit</button>
+                    <div className="interact">
+                      <button type="submit" disabled={postMessage === "" ? true : false}>Submit</button>
+                    </div>
                 </form>
             </div>
             )

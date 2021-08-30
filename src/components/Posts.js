@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Posts = (props) => {
-    const {baseURL, userName, userToken, initialPosts, isAuthenticated} = props;
-    const [ newMessage, setNewMessage ] = useState("")
+    const {baseURL, userToken, initialPosts, isAuthenticated} = props;
 
     async function Delete(ID) {
         const postID = ID.ID;
