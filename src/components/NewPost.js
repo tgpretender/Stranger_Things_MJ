@@ -9,7 +9,7 @@ const NewPost = (props) => {
     const [ postDelivery, setPostDelivery ] = useState(false);
         
     const sendPost = async() => {
-        event.preventDefault();
+        //event.preventDefault();
 
         const response = await fetch(`${baseURL}/posts`, {
             method: "POST",

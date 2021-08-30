@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom';
 
+
 import { 
     Header,
     Login,
@@ -9,7 +10,8 @@ import {
     NewPost,
     Profile,
     Search,
-    Edit
+    Edit,
+    Messages,
 } from './components';
 
 const App = () => {
@@ -43,9 +45,8 @@ const App = () => {
                 <Route exact path="/">
                     <h1>Glad to have you at Stranger's Things!</h1>
                 </Route>
-                <Route path="/profile">
-                    <Profile baseURL={baseURL} userToken={userToken} userName={userName} />
-                </Route>
+                <Route path="/messages/:id" children={<Messages baseURL={baseURL} userName={userName} userToken={userToken} isAuthenticated={isAuthenticated} />} /
+                >
                 <Route path="/posts">
                     <Posts baseURL={baseURL} userName={userName} userToken={userToken} initialPosts={initialPosts} isAuthenticated={isAuthenticated} />
                 </Route>
@@ -83,5 +84,8 @@ const search = () => (
 const edit = () => {
     <h1>Showing Edit</h1>
 }
+const messages =() => (
+    <h1>Showing Messages</h1>
+)
 
 ReactDOM.render(<App />, document.getElementById('app'));

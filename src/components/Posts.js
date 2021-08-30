@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Posts = (props) => {
@@ -50,7 +50,7 @@ const Posts = (props) => {
                         <div className="interact">
                             <Link to={`/edit/${ID}`}><button>Edit</button></Link>
                             <button onClick={() => Delete({ID})}>Delete</button> 
-                            <button>Message</button>
+                            <Link to={`/messages/${ID}`}><button className="NavLink">Messages</button></Link>
                         </div>
                     }
                 </div>)
