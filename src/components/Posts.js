@@ -1,48 +1,9 @@
-import React from 'react';
-import { useState, useHistory} from 'react';
-
+import { useState} from 'react'
 
 const Posts = (props) => {
-    const {baseURL, userToken, initialPosts, isAuthenticated} = props;
-    const [ postMessage, setPostMessage ] = useState(" ");
- 
-
-
-        //  const sendMessage = () => {
-        //     fetch(`${baseURL}/posts/POST_ID/messages`, {
-        //         method: "POST",
-        //         headers: {
-        //           'Content-Type': 'application/json',
-        //           'Authorization': `Bearer ${userToken}`
-        //         },
-        //         body: JSON.stringify({
-        //           message: {
-        //             content: postMessage
-        //           }
-        //         })
-        //       }).then(response => response.json())
-        //         .then(result => {
-        //           console.log(result);
-        //         })
-        //         .catch(console.error);
-
-        //         return (<div className="newMessage">
-        //     <h1>Send A Message</h1>
-        //         <form onSubmit={sendMessage}>
-        //             <div>
-        //                 <label>Message: </label><br />
-        //                 <input id="message"
-        //                 type="text"
-        //                 name="message"
-        //                 value={postMessage}
-        //                 onChange={(e) => setPostMessage(e.target.value)} />
-        //             </div>
-        //             <button type= "submit">Submit</button>
-        //         </form>
-        //     </div>
-        //     )
-        //     }
-
+    const {baseURL, userName, userToken, initialPosts, isAuthenticated} = props;
+    const [ showEditBlock, setShowEditBlock ] = useState(false);
+    const [ newMessage, setNewMessage ] = useState("")
 
     async function Delete(ID) {
         const postID = ID.ID;
@@ -65,13 +26,42 @@ const Posts = (props) => {
             .catch(err => console.error(err));
     }
 
+    async function Edit(ID, message) {
+        const postID = ID.ID;
+        event.preventDefault();
+
+        const response = await fetch(`${baseURL}/posts/${postID}`, {
+            method: "PATCH",
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${userToken}`
+            },
+            body: JSON.stringify({
+                description: message,
+        })
+        
+        })
+            .then(res => res.json())
+            .then(result => console.log(result))
+            .then((result) => { 
+                console.log(result.success);
+                // if(result.success === true){
+                //     return console.log("can edit")
+                // } else {
+                //     alert("You do not have permission to edit this post!");
+                // }
+            })
+            .catch(err => console.error(err));
+
+
+    }
+
     return initialPosts.map((post, index) => {
-        const { _id: ID, author: {username}, createdAt, description, location, price, title, updatedAt, willDeliver} = post;
+        const { _id: ID, author: {username, _id: userID}, createdAt, description, location, price, title, updatedAt, willDeliver} = post;
         const dayCreated = createdAt.slice(0,10);
         const timeCreated = createdAt.slice(11,16);
         const dayUpdated = updatedAt.slice(0,10);
         const timeUpdated = updatedAt.slice(11,16);
-
         return (<div key={index} className="post">
                     <div className="postHeading">
                         <div className="title">{title}</div>
@@ -87,9 +77,22 @@ const Posts = (props) => {
                     </div>
                     { isAuthenticated &&
                         <div className="interact">
-                            {/* Stretch: <button>Edit</button> */}
+                            <button onClick={() => setShowEditBlock(true)}>Edit</button>
                             <button onClick={() => Delete({ID})}>Delete</button> 
                             <button>Message</button>
+                        </div>
+                    }
+                    { showEditBlock && <div key={index} className="editBlock">
+                            <form>
+                                <label>New Description: </label><br />
+                                <textarea is="message" 
+                                    type="text"
+                                    name="message"
+                                    rows="5"
+                                    value={newMessage}
+                                    onChange={(e) => setNewMessage(e.target.value)} />
+                                <button onClick={() => Edit({ID, newMessage})}>Submit</button>
+                            </form>
                         </div>
                     }
                 </div>)

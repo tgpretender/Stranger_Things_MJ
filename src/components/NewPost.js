@@ -4,31 +4,32 @@ const NewPost = (props) => {
     const { baseURL, isAuthenticated, userToken} = props;
     const [ postTitle, setPostTitle ] = useState(" ");
     const [ postDescription, setPostDescription ] = useState(" ");
-    const [ postPrice, setPostPrice] = useState("");
-    const [postLocation, setPostLocation] =useState("");
-    const [postDelivery, setPostDelivery] = useState(false);
+    const [ postPrice, setPostPrice ] = useState("");
+    const [ postLocation, setPostLocation ] = useState("");
+    const [ postDelivery, setPostDelivery ] = useState(false);
         
-         const sendPost = async() => {
-             event.preventDefault();
+    const sendPost = async() => {
+        //event.preventDefault();
 
-            const response = await fetch(`${baseURL}/posts`, {
-                method: "POST",
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${userToken}`
-                },
-                body: JSON.stringify({
-             post: {
-                title: postTitle,
-                description: postDescription,
-                price: postPrice,
-                location: postLocation, 
-                willDeliver: false,
-              }
-                })
-              })
-        }
-    
+        const response = await fetch(`${baseURL}/posts`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${userToken}`
+            },
+            body: JSON.stringify({
+                post: {
+                    title: postTitle,
+                    description: postDescription,
+                    price: postPrice,
+                    location: postLocation, 
+                    willDeliver: false,
+                }
+            })
+        });
+
+        const post = await response.json();
+    }
 
     return (<div className="newPost">
         <h1>Make a New Post</h1>
@@ -47,7 +48,6 @@ const NewPost = (props) => {
                     type="text"
                     name="description"
                     rows="5"
-                    cols="23"
                     value={postDescription}
                     onChange={(e) => setPostDescription(e.target.value)} />
                 </div>
@@ -74,14 +74,16 @@ const NewPost = (props) => {
                     name="Delivery"
                     value={postDelivery}
                     onChange={(e) => setPostDelivery(e.target.value)} >
+                        {/* Returning false regardless, figure it out later */}
                         <option value= {true}>
-                            "yes"
+                            Yes
                         </option>
                         <option value= {false}>
-                            "no"
+                            No
                         </option>
                         </select>
-                </div> 
+                </div>
+                <br />
                 <button type= "submit">Submit</button>
             </form>
         </div>)

@@ -17,6 +17,13 @@ h3 {
 input {
     margin-bottom:10px;
     padding:5px;
+    width:100%;
+}
+textarea {
+    width:100%
+}
+label {
+    font-weight: bold;
 }
 button {
     padding:5px;
@@ -29,6 +36,7 @@ button {
     grid-template-columns: 1fr 20%;
     grid-template-rows: 15% 1fr 10%;
     overflow: hidden;
+    overflow-wrap: break-word;
     height: 100%;
     width: 100%;
     background-color:gray;
@@ -63,6 +71,13 @@ nav button {
 nav button:hover {
     color:#81c3d7;
 }
+.NavLink {
+    margin-left:10px;
+    padding:5px;
+    text-decoration: none;
+    background-color:#a98467;
+    color:black;
+}
 main {
     grid-row:2;
     grid-column:1;
@@ -88,13 +103,6 @@ main {
 #sidebar button:hover {
     color:#483B33;
 }
-footer {
-    grid-row:3;
-    grid-column:1/ -1;
-    padding:10px;
-    background-color:#2f6690;
-    border-top: 5px dashed #483b33;
-}
 .register {
     padding:10px;
     text-align:center;
@@ -111,9 +119,14 @@ footer {
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    margin-bottom:10px;
+    margin-bottom:20px;
     padding:10px;
     border:2px solid black;
+}
+.deleted {
+    color:red;
+    font-weight:bold;
+    text-align:right;
 }
 .postHeading {
     display:flex;
@@ -135,6 +148,7 @@ footer {
 }
 .description {
     margin-top:10px;
+    overflow: hidden;
     font-size: 18px;
 }
 .details {
@@ -148,4 +162,36 @@ footer {
     margin-left:5px;
     background-color:#2f6690;
     color:white;
+}
+footer {
+    grid-row:3;
+    grid-column:1/ -1;
+    padding:10px;
+    background-color:#2f6690;
+    border-top: 5px dashed #483b33;
+}
+
+.search form {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+.search input {
+    flex-grow: 2;
+}
+.search label {
+    flex-grow:1;
+    margin-top: -10px;
+    margin-right:10px;
+    color:white;
+}
+.search button {
+    flex-grow:1;
+    margin-top: -10px;
+    margin-left:10px;
+    background-color:#a98467;
+    color:black;
+}
+.search button:hover {
+    color:#81c3d7;
 }

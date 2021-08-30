@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
 
 const Header = (props) => {
-    const { isAuthenticated, userName, setUserName, setUserToken, setIsAuthenticated, setShowProfile } = props;
+    const { isAuthenticated, userName, setUserName, setUserToken, setIsAuthenticated, setShowPosts, setShowProfile, setShowSearch, setShowHome } = props;
     
     function Logout() {
         setIsAuthenticated(false);
@@ -22,16 +23,16 @@ const Header = (props) => {
             { isAuthenticated ? <h1>Welcome, {userName}!</h1> : <h1>Welcome!</h1> }
             { isAuthenticated && 
                 <nav>
-                    <button onClick={() => location.reload()}>Home</button>
-                    <button onClick={() => setShowProfile(false)}>Posts</button>
-                    <button onClick={() => setShowProfile(true)}>Profile</button>
+                    <NavLink className="NavLink" exact to="/">Home</NavLink>
+                    <NavLink className="NavLink" to="/posts">Posts</NavLink>
+                    <NavLink className="NavLink" to="/profile">Profile</NavLink>
                     <button onClick={() => Logout()}>Log Out</button>
                 </nav> 
             } 
             { !isAuthenticated && 
                 <nav>
-                    <button onClick={() => location.reload()}>Home</button>
-                    <button onClick={() => setShowProfile(false)}>Posts</button>
+                    <NavLink className="NavLink" exact to="/">Home</NavLink>
+                    <NavLink className="NavLink" to="/posts">Posts</NavLink>
                 </nav> 
             }
         </header>)
