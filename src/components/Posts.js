@@ -1,4 +1,5 @@
 import { useState} from 'react'
+import { Link } from 'react-router-dom'
 
 const Posts = (props) => {
     const {baseURL, userName, userToken, initialPosts, isAuthenticated} = props;
@@ -72,7 +73,7 @@ const Posts = (props) => {
                         <div className="interact">
                             <button onClick={() => setShowEditBlock(true)}>Edit</button>
                             <button onClick={() => Delete({ID})}>Delete</button> 
-                            <button>Message</button>
+                            <Link to={`/messages/${ID}`}><button className="NavLink">Messages</button></Link>
                         </div>
                     }
                     {/* { showEditBlock && <div key={index} className="editBlock">

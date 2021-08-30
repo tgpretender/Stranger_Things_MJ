@@ -3,16 +3,24 @@
 // The message form really only needs a text input, and a button to create the message.
 // Again, like the delete button, the submit handler will need a way to know how to form the correct URL so that the API responds,
 // so make sure you're recovering it from the post element, if you're attaching it as data to begin with.
-import React from 'react'
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Messages = (props) => {
     const { baseURL, userName, isAuthenticated, userToken} = props;
-    const [ postMessage, setPostMessage ] = useState(" ");
- 
+    const [ postMessage, setPostMessage ] = useState("");
+    const { id } = useParams();
+
+    const notify = () => toast("Your message was submitted!");
 
 
-         const sendMessage = () => {
-            fetch(`${baseURL}/posts/POST_ID/messages`, {
+         const sendMessage = (event) => {
+           event.preventDefault();
+
+           console.log(id)
+            fetch(`${baseURL}/posts/${id}/messages`, {
                 method: "POST",
                 headers: {
                   'Content-Type': 'application/json',
@@ -26,13 +34,16 @@ const Messages = (props) => {
               }).then(response => response.json())
                 .then(result => {
                   console.log(result);
+                  setPostMessage('');
+                  notify();
                 })
                 .catch(console.error);
             }
 
             return (<div className="newMessage">
+              <ToastContainer />
             <h1>Send A Message</h1>
-                <form onSubmit={sendNewMessage}>
+                <form onSubmit={sendMessage}>
                     <div>
                         <label>Message: </label><br />
                         <input id="message"
@@ -41,7 +52,7 @@ const Messages = (props) => {
                         value={postMessage}
                         onChange={(e) => setPostMessage(e.target.value)} />
                     </div>
-                    <button type= "submit">Submit</button>
+                    <button type="submit" disabled={postMessage === "" ? true : false}>Submit</button>
                 </form>
             </div>
             )
