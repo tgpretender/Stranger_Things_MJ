@@ -8,7 +8,8 @@ import {
     Posts,
     NewPost,
     Profile,
-    Search
+    Search,
+    Edit
 } from './components';
 
 const App = () => {
@@ -51,6 +52,9 @@ const App = () => {
                 <Route path="/search">
                     <Search initialPosts={initialPosts}/>
                 </Route>
+                <Route path="/edit">
+                    <Edit baseURL={baseURL} userToken={userToken}/>
+                </Route>
                 <Route>
                     <h1>404 Page not found!</h1>
                 </Route>
@@ -70,11 +74,14 @@ const home = () => (
 const prof = () => (
 	<h1>Showing Profile</h1>
 )
-const post =() => (
+const post = () => (
     <h1>Showing Posts</h1>
 )
-const search =() => (
-    <h1>Showing SearchResults</h1>
+const search = () => (
+    <h1>Showing Search</h1>
 )
+const edit = () => {
+    <h1>Showing Edit</h1>
+}
 
 ReactDOM.render(<App />, document.getElementById('app'));

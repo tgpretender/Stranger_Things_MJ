@@ -1,34 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Profile = (props) => {
     const { baseURL, userToken, userName } = props;
     const [ userPosts, setUserPosts ] = useState([]);
     const [ userMessages, setUserMessages ] = useState([]);
-    const [ showEdit, setShowEdit ] = useState(false)
-    const [ newMessage, setNewMessage ] = useState("")
-
-    async function Edit(ID, message) {
-        const postID = ID.ID;
-        event.preventDefault();
-
-        const response = await fetch(`${baseURL}/posts/${postID}`, {
-            method: "PATCH",
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${userToken}`
-            },
-            body: JSON.stringify({
-                description: message,
-        })
-        
-        })
-            .then(res => res.json())
-            .then(result => console.log(result.success))
-            .catch(err => console.error(err));
-
-
-    }
-
 
     useEffect(() => {
         fetch(`${baseURL}/users/me`, {
@@ -41,8 +17,9 @@ const Profile = (props) => {
         .then(res => res.json())
         .then((result) => {
             const response = result.data;
-            setUserPosts(response.posts)
-            setUserMessages(response.messages)
+            setUserPosts(response.posts);
+            setUserMessages(response.messages);
+            console.log(response.messages);
         })
         .catch(err => console.error(err))
     }, []);
@@ -76,26 +53,9 @@ const Profile = (props) => {
                                         <p><b>Updated:</b> {dayUpdated}, {timeUpdated}</p>
                                         <br />
                                         <div className="interact">
-                                            <button onClick={() => setShowEdit(true)}>Edit</button>
+                                            <Link to={`/edit/${ID}`}><button>Edit</button></Link>
                                         </div>
                                     </div>
-                                    {showEdit && 
-                                        <div className="interact">
-                                            <div key={ID} className="editBlock">
-                                                <br />
-                                                <form>
-                                                    <label>New Description: </label><br />
-                                                    <textarea is="message" 
-                                                        type="text"
-                                                        name="message"
-                                                        rows="5"
-                                                        value={newMessage}
-                                                        onChange={(e) => setNewMessage(e.target.value)} />
-                                                    <button onClick={() => Edit({ID, newMessage})}>Submit</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    }
                                 </div>
                             )
                         }
@@ -104,6 +64,22 @@ const Profile = (props) => {
             </div>
             <div className="profileMessages">
                 <h2>My Messages</h2>
+                {
+                    userMessages.map((message, index) => {
+                        const { fromUser: { username }, post: {title}} = message;
+
+                        return (
+                            <div key={index} className="post">
+                                <div className="message">
+                                    <div className="postHeading">
+                                        <div className="title">{username}</div>
+                                    </div>
+                                    <div className="description">{title}</div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
             </div>
         </div>);
 }

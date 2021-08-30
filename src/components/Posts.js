@@ -1,4 +1,5 @@
-import { useState} from 'react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const Posts = (props) => {
     const {baseURL, userName, userToken, initialPosts, isAuthenticated} = props;
@@ -47,6 +48,7 @@ const Posts = (props) => {
                     </div>
                     { isAuthenticated &&
                         <div className="interact">
+                            <Link to={`/edit/${ID}`}><button>Edit</button></Link>
                             <button onClick={() => Delete({ID})}>Delete</button> 
                             <button>Message</button>
                         </div>
