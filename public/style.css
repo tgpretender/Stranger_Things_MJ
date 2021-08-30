@@ -100,11 +100,11 @@ main {
 #sidebar h1 {
     margin-bottom:10px;
 }
-#sidebar button, .search button {
+#sidebar button, main button {
     background-color:#2f6690;
     color:white;
 }
-#sidebar button:hover, .search button:hover {
+#sidebar button:hover, main button:hover {
     color:#483B33;
 }
 .register {
@@ -126,11 +126,6 @@ main {
     margin-bottom:20px;
     padding:10px;
     border:2px solid black;
-}
-.deleted {
-    color:red;
-    font-weight:bold;
-    text-align:right;
 }
 .postHeading {
     display:flex;

@@ -2,7 +2,6 @@ import { useState} from 'react'
 
 const Posts = (props) => {
     const {baseURL, userName, userToken, initialPosts, isAuthenticated} = props;
-    const [ showEditBlock, setShowEditBlock ] = useState(false);
     const [ newMessage, setNewMessage ] = useState("")
 
     async function Delete(ID) {
@@ -24,28 +23,6 @@ const Posts = (props) => {
                 }
             })
             .catch(err => console.error(err));
-    }
-
-    async function Edit(ID, message) {
-        const postID = ID.ID;
-        event.preventDefault();
-
-        const response = await fetch(`${baseURL}/posts/${postID}`, {
-            method: "PATCH",
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${userToken}`
-            },
-            body: JSON.stringify({
-                description: message,
-        })
-        
-        })
-            .then(res => res.json())
-            .then(result => console.log(result.success))
-            .catch(err => console.error(err));
-
-
     }
 
     return initialPosts.map((post, index) => {
@@ -70,24 +47,10 @@ const Posts = (props) => {
                     </div>
                     { isAuthenticated &&
                         <div className="interact">
-                            <button onClick={() => setShowEditBlock(true)}>Edit</button>
                             <button onClick={() => Delete({ID})}>Delete</button> 
                             <button>Message</button>
                         </div>
                     }
-                    {/* { showEditBlock && <div key={index} className="editBlock">
-                            <form>
-                                <label>New Description: </label><br />
-                                <textarea is="message" 
-                                    type="text"
-                                    name="message"
-                                    rows="5"
-                                    value={newMessage}
-                                    onChange={(e) => setNewMessage(e.target.value)} />
-                                <button onClick={() => Edit({ID, newMessage})}>Submit</button>
-                            </form>
-                        </div>
-                    } */}
                 </div>)
         });
 }

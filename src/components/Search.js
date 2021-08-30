@@ -40,7 +40,7 @@ const Search = (props) => {
         </form>
         <div className="return">
         {postMatches.map((post, index) => {
-                    const { _id: ID, author: {username}, active, createdAt, description, location, price, title, updatedAt, willDeliver} = post;
+                    const { author: {username}, active, createdAt, description, location, price, title, updatedAt, willDeliver} = post;
                     const dayCreated = createdAt.slice(0,10);
                     const timeCreated = createdAt.slice(11,16);
                     const dayUpdated = updatedAt.slice(0,10);
