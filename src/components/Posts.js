@@ -42,15 +42,7 @@ const Posts = (props) => {
         
         })
             .then(res => res.json())
-            .then(result => console.log(result))
-            .then((result) => { 
-                console.log(result.success);
-                // if(result.success === true){
-                //     return console.log("can edit")
-                // } else {
-                //     alert("You do not have permission to edit this post!");
-                // }
-            })
+            .then(result => console.log(result.success))
             .catch(err => console.error(err));
 
 
@@ -72,6 +64,7 @@ const Posts = (props) => {
                         <p><b>Location</b>: {location}</p>
                         <p><b>Price:</b> {price}</p>
                         <p><b>Will Deliver:</b> {willDeliver ? 'Yes' : 'No'}</p>
+                        <br />
                         <p><b>Created:</b> {dayCreated}, {timeCreated}</p>
                         <p><b>Updated:</b> {dayUpdated}, {timeUpdated}</p>
                     </div>
@@ -82,7 +75,7 @@ const Posts = (props) => {
                             <button>Message</button>
                         </div>
                     }
-                    { showEditBlock && <div key={index} className="editBlock">
+                    {/* { showEditBlock && <div key={index} className="editBlock">
                             <form>
                                 <label>New Description: </label><br />
                                 <textarea is="message" 
@@ -94,7 +87,7 @@ const Posts = (props) => {
                                 <button onClick={() => Edit({ID, newMessage})}>Submit</button>
                             </form>
                         </div>
-                    }
+                    } */}
                 </div>)
         });
 }

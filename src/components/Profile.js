@@ -22,13 +22,9 @@ const Profile = (props) => {
         .catch(err => console.error(err))
     }, []);
 
-        userPosts.forEach(posts => {
-
-        });
-
     return (<div className="profile">
             <h1>{userName}'s Profile</h1>
-
+            <br />
             <div className="profilePosts">
                 <h2>My Posts</h2>
                 {userPosts.map((post, index) => {
@@ -37,7 +33,7 @@ const Profile = (props) => {
                     const timeCreated = createdAt.slice(11,16);
                     const dayUpdated = updatedAt.slice(0,10);
                     const timeUpdated = updatedAt.slice(11,16);
-            
+                    if(active) {
                     return (<div key={index} className="post">
                                 <div className="postHeading">
                                     <div className="title">{title}</div>
@@ -48,12 +44,12 @@ const Profile = (props) => {
                                     <p><b>Location</b>: {location}</p>
                                     <p><b>Price:</b> {price}</p>
                                     <p><b>Will Deliver:</b> {willDeliver ? 'Yes' : 'No'}</p>
+                                    <br />
                                     <p><b>Created:</b> {dayCreated}, {timeCreated}</p>
                                     <p><b>Updated:</b> {dayUpdated}, {timeUpdated}</p>
                                     <br />
-                                    { !active && <div className="deleted">DELETED</div> }
                                 </div>
-                            </div>)
+                            </div>)}
                 })}
             </div>
             <div className="profileMessages">
