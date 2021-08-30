@@ -5,7 +5,7 @@
 // so make sure you're recovering it from the post element, if you're attaching it as data to begin with.
 import React from 'react'
 
-const Message = (props) => {
+const Messages = (props) => {
     const { baseURL, userName, isAuthenticated, userToken} = props;
     const [ postMessage, setPostMessage ] = useState(" ");
  
@@ -46,5 +46,5 @@ const Message = (props) => {
             </div>
             )
           }
-          sendMessage()
-          export default Message;
+          
+          export default Messages;

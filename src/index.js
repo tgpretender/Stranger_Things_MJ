@@ -9,7 +9,8 @@ import {
     Posts,
     NewPost,
     Profile,
-    Search
+    Search,
+    Messages,
 } from './components';
 
 const App = () => {
@@ -48,9 +49,7 @@ const App = () => {
                 <Route exact path="/">
                     <h1>Glad to have you at Stranger's Things!</h1>
                 </Route>
-                <Route path="/profile">
-                    <Profile baseURL={baseURL} userToken={userToken} userName={userName} />
-                </Route>
+                
                 <Route path="/posts">
                     <Posts baseURL={baseURL} userName={userName} userToken={userToken} initialPosts={initialPosts} isAuthenticated={isAuthenticated} />
                 </Route>
@@ -104,6 +103,9 @@ const post =() => (
 )
 const search =() => (
     <h1>Showing SearchResults</h1>
+)
+const messages =() => (
+    <h1>Showing Messages</h1>
 )
 
 ReactDOM.render(<App />, document.getElementById('app'));
